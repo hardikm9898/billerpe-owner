@@ -1,4 +1,5 @@
-import { Navigate, Outlet, createRootRoute, useNavigate, type ErrorComponentProps } from "@tanstack/react-router";
+import { Navigate, Outlet, createRootRoute, useNavigate, useRouter, type ErrorComponentProps } from "@tanstack/react-router";
+import { refreshAlertCount } from "@/lib/alertCount";
 import { useEffect } from "react";
 import { LoginScreen } from "@/components/LoginScreen";
 import { SessionProvider, useSession } from "@/lib/session";
@@ -21,15 +22,17 @@ function Root() {
 /** Logged out = the login screen, whatever the route. Logged in = the app. */
 function Gate() {
   const { state, pendingLink, clearPendingLink } = useSession();
-  const navigate = useNavigate();
+  const router = useRouter();
 
-  // A tapped notification opens its screen once the app is ready.
+  // A tapped notification opens its screen once the app is ready (the
+  // link may carry a query, so the history takes the whole address).
   useEffect(() => {
     if (state.status === "in" && pendingLink) {
       clearPendingLink();
-      void navigate({ to: pendingLink });
+      router.history.push(pendingLink);
+      void refreshAlertCount();
     }
-  }, [state.status, pendingLink, clearPendingLink, navigate]);
+  }, [state.status, pendingLink, clearPendingLink, router]);
 
   if (state.status === "loading") return <Splash />;
   if (state.status === "out") return <LoginScreen notice={state.notice} />;

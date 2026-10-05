@@ -398,3 +398,58 @@ export interface ManageStock {
   semi: { id: string; name: string }[];
   recipes: { itemId: string; itemName: string; base: { kind: "raw" | "semi"; refId: string; qty: number }[]; variants: number; addons: number }[];
 }
+
+/* ------------------------------ phase 4 · alerts ------------------------------ */
+
+export type AlertKind = "pc-offline" | "pc-online" | "cancel-after-kot" | "discount" | "edited" | "cash-diff" | "low-stock" | "summary";
+export interface AlertRow {
+  id: number;
+  kind: AlertKind;
+  title: string;
+  body: string;
+  link: string;
+  at: string;
+  read: boolean;
+  outletId: number | null;
+}
+export interface AlertsResult {
+  serverTime: string;
+  unread: number;
+  more: boolean;
+  alerts: AlertRow[];
+}
+export interface AlertRules {
+  pcOffline: { on: boolean; minutes: number };
+  discount: { on: boolean; pct: number };
+  cancelAfterKot: { on: boolean };
+  edited: { on: boolean };
+  cashDiff: { on: boolean };
+  lowStock: { on: boolean };
+  summary: { on: boolean; time: string };
+}
+export interface DaySummary {
+  serverTime: string;
+  date: string;
+  net: number;
+  bills: number;
+  avgBill: number;
+  items: number;
+  compareNet: number;
+  compareLabel: string;
+  outlets: { id: number; name: string; net: number; bills: number; items: number; compareNet: number }[];
+  look: {
+    cancelled: number;
+    cancelledAfterKot: number;
+    cancelledValue: number;
+    discounts: number;
+    discountOver: number;
+    edited: { outlet: string; by: string; billNo: string }[];
+    cashDiff: { outlet: string; amount: number; by: string }[];
+    expenses: number;
+  };
+  discountLimit: number;
+}
+export interface PcHistory {
+  serverTime: string;
+  periods: { from: string; to: string | null; minutes: number }[];
+}

@@ -3,6 +3,7 @@ import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { BarChart3, Bell, ChevronLeft, Home, ReceiptText, RefreshCw, SlidersHorizontal, WifiOff, type LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
+import { useAlertCount } from "@/lib/alertCount";
 
 // Building blocks of design v1 (BillerPe Owner App/design/index.html).
 
@@ -25,11 +26,12 @@ const TABS: { to: string; label: string; icon: LucideIcon; match: (p: string) =>
   { to: "/bills", label: "Bills", icon: ReceiptText, match: (p) => p.startsWith("/bills") || p.startsWith("/bill/") },
   { to: "/reports", label: "Reports", icon: BarChart3, match: (p) => p.startsWith("/reports") || p.startsWith("/report/") },
   { to: "/manage", label: "Manage", icon: SlidersHorizontal, match: (p) => p.startsWith("/manage") },
-  { to: "/alerts", label: "Alerts", icon: Bell, match: (p) => p.startsWith("/alerts") },
+  { to: "/alerts", label: "Alerts", icon: Bell, match: (p) => p.startsWith("/alerts") || p.startsWith("/summary") },
 ];
 
 export function BottomNav() {
   const path = useRouterState({ select: (s) => s.location.pathname });
+  const unread = useAlertCount();
   return (
     <nav className="safe-bottom shrink-0 border-t border-line bg-surface">
       <div className="flex h-[72px] items-start justify-around pt-2">
@@ -42,8 +44,13 @@ export function BottomNav() {
               to={t.to}
               className={cn("flex min-h-12 w-16 flex-col items-center gap-[3px] text-[11px] font-bold", on ? "text-brand" : "text-[#6B615B]")}
             >
-              <span className={cn("flex h-[30px] w-[54px] items-center justify-center rounded-full", on && "bg-brand-soft")}>
+              <span className={cn("relative flex h-[30px] w-[54px] items-center justify-center rounded-full", on && "bg-brand-soft")}>
                 <Icon className="size-5" strokeWidth={1.9} />
+                {t.to === "/alerts" && unread > 0 && (
+                  <span aria-label={`${unread} unread`} className="absolute right-2 top-0 flex h-[17px] min-w-[17px] items-center justify-center rounded-full border-2 border-white bg-brand px-1 text-[10px] font-extrabold text-white">
+                    {unread > 99 ? "99+" : unread}
+                  </span>
+                )}
               </span>
               {t.label}
             </Link>

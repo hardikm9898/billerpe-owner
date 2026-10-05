@@ -18,6 +18,7 @@ import { Route as ReportsRouteImport } from "./routes/reports"
 import { Route as OutletOutletIdRouteImport } from "./routes/outlet.$outletId"
 import { Route as PcOutletIdRouteImport } from "./routes/pc.$outletId"
 import { Route as ReportReportIdRouteImport } from "./routes/report.$reportId"
+import { Route as SummaryDateRouteImport } from "./routes/summary.$date"
 import { Route as TablesOutletIdRouteImport } from "./routes/tables.$outletId"
 import { Route as BillOutletIdBillIdRouteImport } from "./routes/bill.$outletId.$billId"
 import { Route as ManageMenuOutletIdRouteImport } from "./routes/manage_.menu.$outletId"
@@ -70,6 +71,11 @@ const PcOutletIdRoute = PcOutletIdRouteImport.update({
 const ReportReportIdRoute = ReportReportIdRouteImport.update({
   id: "/report/$reportId",
   path: "/report/$reportId",
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SummaryDateRoute = SummaryDateRouteImport.update({
+  id: "/summary/$date",
+  path: "/summary/$date",
   getParentRoute: () => rootRouteImport,
 } as any)
 const TablesOutletIdRoute = TablesOutletIdRouteImport.update({
@@ -125,6 +131,7 @@ export interface FileRoutesByFullPath {
   "/outlet/$outletId": typeof OutletOutletIdRoute
   "/pc/$outletId": typeof PcOutletIdRoute
   "/report/$reportId": typeof ReportReportIdRoute
+  "/summary/$date": typeof SummaryDateRoute
   "/tables/$outletId": typeof TablesOutletIdRoute
   "/bill/$outletId/$billId": typeof BillOutletIdBillIdRoute
   "/manage/menu/$outletId": typeof ManageMenuOutletIdRoute
@@ -144,6 +151,7 @@ export interface FileRoutesByTo {
   "/outlet/$outletId": typeof OutletOutletIdRoute
   "/pc/$outletId": typeof PcOutletIdRoute
   "/report/$reportId": typeof ReportReportIdRoute
+  "/summary/$date": typeof SummaryDateRoute
   "/tables/$outletId": typeof TablesOutletIdRoute
   "/bill/$outletId/$billId": typeof BillOutletIdBillIdRoute
   "/manage/menu/$outletId": typeof ManageMenuOutletIdRoute
@@ -164,6 +172,7 @@ export interface FileRoutesById {
   "/outlet/$outletId": typeof OutletOutletIdRoute
   "/pc/$outletId": typeof PcOutletIdRoute
   "/report/$reportId": typeof ReportReportIdRoute
+  "/summary/$date": typeof SummaryDateRoute
   "/tables/$outletId": typeof TablesOutletIdRoute
   "/bill/$outletId/$billId": typeof BillOutletIdBillIdRoute
   "/manage_/menu/$outletId": typeof ManageMenuOutletIdRoute
@@ -185,6 +194,7 @@ export interface FileRouteTypes {
     | "/outlet/$outletId"
     | "/pc/$outletId"
     | "/report/$reportId"
+    | "/summary/$date"
     | "/tables/$outletId"
     | "/bill/$outletId/$billId"
     | "/manage/menu/$outletId"
@@ -204,6 +214,7 @@ export interface FileRouteTypes {
     | "/outlet/$outletId"
     | "/pc/$outletId"
     | "/report/$reportId"
+    | "/summary/$date"
     | "/tables/$outletId"
     | "/bill/$outletId/$billId"
     | "/manage/menu/$outletId"
@@ -223,6 +234,7 @@ export interface FileRouteTypes {
     | "/outlet/$outletId"
     | "/pc/$outletId"
     | "/report/$reportId"
+    | "/summary/$date"
     | "/tables/$outletId"
     | "/bill/$outletId/$billId"
     | "/manage_/menu/$outletId"
@@ -243,6 +255,7 @@ export interface RootRouteChildren {
   OutletOutletIdRoute: typeof OutletOutletIdRoute
   PcOutletIdRoute: typeof PcOutletIdRoute
   ReportReportIdRoute: typeof ReportReportIdRoute
+  SummaryDateRoute: typeof SummaryDateRoute
   TablesOutletIdRoute: typeof TablesOutletIdRoute
   BillOutletIdBillIdRoute: typeof BillOutletIdBillIdRoute
   ManageMenuOutletIdRoute: typeof ManageMenuOutletIdRoute
@@ -318,6 +331,13 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof ReportReportIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    "/summary/$date": {
+      id: "/summary/$date"
+      path: "/summary/$date"
+      fullPath: "/summary/$date"
+      preLoaderRoute: typeof SummaryDateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     "/tables/$outletId": {
       id: "/tables/$outletId"
       path: "/tables/$outletId"
@@ -387,6 +407,7 @@ const rootRouteChildren: RootRouteChildren = {
   OutletOutletIdRoute: OutletOutletIdRoute,
   PcOutletIdRoute: PcOutletIdRoute,
   ReportReportIdRoute: ReportReportIdRoute,
+  SummaryDateRoute: SummaryDateRoute,
   TablesOutletIdRoute: TablesOutletIdRoute,
   BillOutletIdBillIdRoute: BillOutletIdBillIdRoute,
   ManageMenuOutletIdRoute: ManageMenuOutletIdRoute,

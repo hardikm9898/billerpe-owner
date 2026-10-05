@@ -42,6 +42,10 @@ function Bills() {
   const filter = search.filter ?? "all";
   const outlet: OutletChoice = search.outlet ?? "all";
   const [range, setRange] = useState<Range>({ key: search.range ?? "today" });
+  // A link from elsewhere (day summary, outlet) may set the range after the screen exists.
+  useEffect(() => {
+    if (search.range) setRange({ key: search.range });
+  }, [search.range]);
   const [searchOpen, setSearchOpen] = useState(false);
   const [text, setText] = useState("");
   const [term, setTerm] = useState("");

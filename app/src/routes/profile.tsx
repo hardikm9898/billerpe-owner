@@ -1,6 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useRouterState } from "@tanstack/react-router";
 import { ChevronRight, Loader2, LogOut, Phone, Store } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { AlertRules } from "@/components/AlertRules";
 import { Card, IconTile, Screen, Section, TopBar } from "@/components/ui";
 import type { OutletsResult } from "@/lib/api";
 import { initials } from "@/lib/format";
@@ -21,6 +22,11 @@ function Profile() {
   const outlets = useCall<OutletsResult>("outlets");
   const [busy, setBusy] = useState(false);
   const count = outlets.data?.outlets.length;
+  // Opened from the Alerts screen's "Alert rules": go straight to them.
+  const hash = useRouterState({ select: (st) => st.location.hash });
+  useEffect(() => {
+    if (hash === "rules") setTimeout(() => document.getElementById("rules")?.scrollIntoView({ behavior: "smooth" }), 300);
+  }, [hash]);
 
   return (
     <Screen>
@@ -51,6 +57,8 @@ function Profile() {
           </div>
         </>
       )}
+
+      <AlertRules />
 
       <Section title="Help" />
       <div className="mx-4 overflow-hidden rounded-[20px] bg-surface">

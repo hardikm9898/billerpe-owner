@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Info, Monitor, WifiOff } from "lucide-react";
 import { Card, ErrorState, IconTile, Screen, Section, Skeleton, Tag, TopBar, cn } from "@/components/ui";
-import type { OutletsResult } from "@/lib/api";
-import { ago, fullDate, time } from "@/lib/format";
+import type { OutletsResult, PcHistory } from "@/lib/api";
+import { ago, fullDate, time, weekday } from "@/lib/format";
 import { pcLine, updateLine } from "@/lib/pc";
 import { useCall, useServerNow } from "@/lib/useCall";
 
@@ -14,6 +14,8 @@ export const Route = createFileRoute("/pc/$outletId")({ component: OutletPcScree
 function OutletPcScreen() {
   const { outletId } = Route.useParams();
   const q = useCall<OutletsResult>("outlets");
+  const h = useCall<PcHistory>("pcHistory", [Number(outletId)]);
+  const history = h.data;
   const now = useServerNow(q.skew);
   const outlet = q.data?.outlets.find((o) => String(o.id) === outletId);
 
@@ -90,6 +92,32 @@ function OutletPcScreen() {
             <Row title="Registered since" sub="When this PC became the outlet's server" end={pc.registeredAt ? fullDate(pc.registeredAt) : "—"} />
             {outlet.subscriptionEndsOn && <Row title="BillerPe plan" sub="Web POS + Captain App" end={`till ${fullDate(outlet.subscriptionEndsOn)}`} />}
           </div>
+        </>
+      )}
+
+      {pc.status !== "not-registered" && history && (
+        <>
+          <Section title="Offline in the last 7 days" />
+          {history.periods.length === 0 ? (
+            <Card className="mx-4 text-[13px] font-semibold text-ink-2">No offline spells recorded.</Card>
+          ) : (
+            <div className="mx-4 overflow-hidden rounded-[20px] bg-surface">
+              {history.periods.map((p) => (
+                <div key={p.from} className="flex min-h-[56px] items-center gap-3 border-t border-line px-3.5 py-2.5 first:border-t-0">
+                  <IconTile tone="warn" icon={WifiOff} />
+                  <div className="min-w-0">
+                    <div className="text-[14px] font-bold">
+                      {weekday(p.from)} · {time(p.from)} – {p.to ? time(p.to) : "now"}
+                    </div>
+                    <div className="text-[12.5px] font-semibold text-ink-2">
+                      {p.minutes >= 60 ? `${Math.floor(p.minutes / 60)} h ${p.minutes % 60} min` : `${p.minutes} min`}
+                      {p.to ? " · back online" : " · still offline"}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </>
       )}
 

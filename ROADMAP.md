@@ -297,3 +297,20 @@ own sync was never pulled. Proven with a real cloud + real exe (fails 3/3 before
 - **Exe:** no change needed for this phase.
 - **App** 0.4.0: `builds/BillerPe-Owner-0.4.0-debug.apk`. Manage walkthrough 35 checks; Reports 28 and
   Watch 43 still pass. End-to-end test with a real PC: 36 checks × 3 runs.
+
+### Phase 4 · Alerts — built 5 Oct 2026 (app 0.5.0)
+Alerts screen (filters, Today / Yesterday / Earlier, unread dots, tap opens the bill / PC / stock /
+summary, mark all read, older alerts), unread badge on the Alerts tab, Day summary screen (sales, by
+outlet, worth a look, share), alert rules in Profile (on/off + limits: offline minutes, discount %,
+summary time), and "Offline in the last 7 days" on the Outlet PC screen. Push notifications through
+the Owner Firebase project.
+
+- **Cloud** `uat-backend-v2` 6de292e: `ownerv1/alerts.js` + minute job, tables `owner_alerts`,
+  `owner_settings`, `owner_offline_periods` (**migration 20261005150000**). 147 owner tests.
+  Real Firebase key checked (a made-up token is rejected and forgotten).
+- **Exe:** no change.
+- **App** 0.5.0: `builds/BillerPe-Owner-0.5.0-debug.apk`. Alerts walkthrough 26 checks; Watch 43,
+  Reports 28, Manage 35 still pass.
+
+**Server step:** `OWNER_FIREBASE_SERVICE_ACCOUNT_FILE` must be set for pushes (alerts still appear in
+the app without it).
