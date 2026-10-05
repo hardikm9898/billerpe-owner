@@ -1,0 +1,755 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BillerPe Owner App · Design v1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></symbol>
+  <symbol id="bill" viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2zM9 8h6M9 12h6M9 16h3"/></symbol>
+  <symbol id="chart" viewBox="0 0 24 24"><path d="M5 20V11M11 20V5M17 20v-7M3 20h18"/></symbol>
+  <symbol id="sliders" viewBox="0 0 24 24"><path d="M4 6h9M17 6h3M4 12h3M11 12h9M4 18h11M19 18h1M15 4v4M9 10v4M17 16v4"/></symbol>
+  <symbol id="bell" viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 1 1 12 0v5l2 2H4zM10 21h4"/></symbol>
+  <symbol id="store" viewBox="0 0 24 24"><path d="M3 9l1.5-5h15L21 9M3 9v11h18V9M3 9h18M9 20v-6h6v6"/></symbol>
+  <symbol id="down" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+  <symbol id="right" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+  <symbol id="left" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></symbol>
+  <symbol id="sync" viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 0-14.9-3M4 4v4h4M4 13a8 8 0 0 0 14.9 3M20 20v-4h-4"/></symbol>
+  <symbol id="table" viewBox="0 0 24 24"><path d="M4 9h16M7 9v10M17 9v10M5 5h14"/></symbol>
+  <symbol id="xcircle" viewBox="0 0 24 24"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM15 9l-6 6M9 9l6 6"/></symbol>
+  <symbol id="search" viewBox="0 0 24 24"><path d="M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14zM20 20l-4-4"/></symbol>
+  <symbol id="cal" viewBox="0 0 24 24"><path d="M4 6h16v14H4zM4 10h16M8 3v4M16 3v4"/></symbol>
+  <symbol id="download" viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></symbol>
+  <symbol id="file" viewBox="0 0 24 24"><path d="M14 3H6v18h12V7zM14 3v4h4M9 13h6M9 17h6"/></symbol>
+  <symbol id="share" viewBox="0 0 24 24"><path d="M12 3v12M7 8l5-5 5 5M5 13v7h14v-7"/></symbol>
+  <symbol id="lock" viewBox="0 0 24 24"><path d="M6 11h12v10H6zM8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+  <symbol id="users" viewBox="0 0 24 24"><path d="M16 19v-1a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v1M9.5 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM21 19v-1a4 4 0 0 0-3-3.9M16 4.1a3.5 3.5 0 0 1 0 6.8"/></symbol>
+  <symbol id="book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h14v16H6a2 2 0 0 0-2 2zM4 21V5M8 7h8M8 11h6"/></symbol>
+  <symbol id="box" viewBox="0 0 24 24"><path d="M21 8 12 3 3 8v8l9 5 9-5zM3 8l9 5 9-5M12 13v8"/></symbol>
+  <symbol id="monitor" viewBox="0 0 24 24"><path d="M3 4h18v12H3zM8 20h8M12 16v4"/></symbol>
+  <symbol id="percent" viewBox="0 0 24 24"><path d="M19 5 5 19M7 9a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM17 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></symbol>
+  <symbol id="cash" viewBox="0 0 24 24"><path d="M3 7h18v10H3zM12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM6 10v4M18 10v4"/></symbol>
+  <symbol id="edit" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16zM14 6l4 4"/></symbol>
+  <symbol id="plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="moon" viewBox="0 0 24 24"><path d="M20 14A8 8 0 1 1 10 4a6 6 0 0 0 10 10z"/></symbol>
+  <symbol id="alert" viewBox="0 0 24 24"><path d="M12 3 2 20h20zM12 10v4M12 17h.01"/></symbol>
+  <symbol id="wifioff" viewBox="0 0 24 24"><path d="M3 3l18 18M8.5 16.5a5 5 0 0 1 7 0M5 13a10 10 0 0 1 5-2.8M19 13a10 10 0 0 0-2.4-1.8M2 8.8a15 15 0 0 1 4.2-2.6M22 8.8A15 15 0 0 0 10.7 5M12 20h.01"/></symbol>
+  <symbol id="check" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></symbol>
+  <symbol id="clock" viewBox="0 0 24 24"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 7v5l3 2"/></symbol>
+  <symbol id="globe" viewBox="0 0 24 24"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+  <symbol id="logout" viewBox="0 0 24 24"><path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10"/></symbol>
+  <symbol id="finger" viewBox="0 0 24 24"><path d="M12 11v4M8 21a9 9 0 0 1-1-5v-4a5 5 0 0 1 10 0v1M16 17a17 17 0 0 1-1 4M4 16v-4a8 8 0 0 1 14-5.3M20 12v1"/></symbol>
+  <symbol id="key" viewBox="0 0 24 24"><path d="M8 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 11h10M18 11v3M21 11v2"/></symbol>
+  <symbol id="tag" viewBox="0 0 24 24"><path d="M3 3h8l10 10-8 8L3 11zM7.5 7.5h.01"/></symbol>
+  <symbol id="layers" viewBox="0 0 24 24"><path d="M12 3 2 8l10 5 10-5zM2 16l10 5 10-5"/></symbol>
+  <symbol id="wallet" viewBox="0 0 24 24"><path d="M3 7h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H3zM3 7V5h13M16 13h2"/></symbol>
+  <symbol id="truck" viewBox="0 0 24 24"><path d="M2 6h11v10H2zM13 10h4l3 3v3h-7M6 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM17 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></symbol>
+  <symbol id="phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-3 2a11 11 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+  <symbol id="info" viewBox="0 0 24 24"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 11v5M12 8h.01"/></symbol>
+  <symbol id="eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12zM12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></symbol>
+  <symbol id="chef" viewBox="0 0 24 24"><path d="M6 14a4 4 0 0 1 1-7.9 5 5 0 0 1 10 0A4 4 0 0 1 18 14v6H6zM6 17h12"/></symbol>
+</svg>
+
+<header class="page-head">
+  <h1>BillerPe Owner App</h1>
+  <p>Design v1 · 5 Oct 2026. A phone app for owners on the Web POS + Captain App plan. The owner sees every outlet from anywhere, downloads reports, gets alerts, and manages menu, staff, tables and settings. The app never takes orders. Every screen scrolls, and links between screens work (tap a card, a tab or the back arrow).</p>
+  <div class="legend">
+    <span>Sample data only</span>
+    <span>Android first</span>
+    <span>Online only · data from the BillerPe cloud</span>
+    <span>Outlet data is up to ~3 min old</span>
+  </div>
+  <nav class="toc" aria-label="Flows">
+    <a href="#flow-watch">1 · Sign in &amp; watch</a>
+    <a href="#flow-reports">2 · Reports &amp; alerts</a>
+    <a href="#flow-manage">3 · Manage</a>
+  </nav>
+</header>
+
+<!-- =============================== FLOW 1 =============================== -->
+<section class="flow" id="flow-watch">
+  <h2>1 · Sign in &amp; watch every outlet</h2>
+  <p>Home adds up all outlets. Each outlet shows whether its PC is online, what is running right now, and every bill with who did what. Everything here is view only.</p>
+  <div class="row">
+
+  <!-- LOGIN -->
+  <figure id="login">
+    <div class="phone"><div class="screen nonav" style="display:flex;flex-direction:column;padding:20px 24px 28px">
+      <div class="between">
+        <img src="assets/billerpe-mark.png" alt="BillerPe" style="height:30px">
+        <button class="chipbtn" type="button"><svg class="i s16"><use href="#globe"/></svg>English<svg class="i s16"><use href="#down"/></svg></button>
+      </div>
+      <div style="margin-top:74px">
+        <span class="tag t-red" style="height:28px;padding:0 12px;font-size:12px">OWNER APP</span>
+        <h2 class="disp" style="font-size:38px;line-height:1.06;letter-spacing:-1px;margin:16px 0 0;font-weight:800">Every outlet,<br>in your pocket.</h2>
+        <p class="muted" style="font-size:15px;line-height:1.55;margin:14px 0 0;font-weight:500">Sales, running tables, reports and alerts from your BillerPe outlets, wherever you are.</p>
+      </div>
+      <form style="margin-top:36px;display:flex;flex-direction:column;gap:14px" onsubmit="location.hash='home';return false">
+        <label class="field"><span>Mobile number</span>
+          <div style="display:flex;gap:8px"><input value="+91" aria-label="Country code" style="width:72px;text-align:center"><input inputmode="numeric" value="98250 41120"></div>
+        </label>
+        <label class="field"><span>Password</span><input type="password" value="owner-password"></label>
+        <a class="btn primary block" href="#home" style="margin-top:8px;color:#fff">Log in</a>
+      </form>
+      <p class="small" style="text-align:center;margin:18px 0 0">Forgot password? <a href="#login">Call BillerPe support</a></p>
+      <div style="margin-top:auto;padding-top:28px;text-align:center" class="small">For owners on BillerPe Web POS + Captain App.<br>Only the Owner login opens this app.</div>
+    </div></div>
+    <figcaption><b>Login</b><span>Owner mobile + password (the same as the Web POS). Staff logins are refused. Fingerprint unlock after the first login.</span></figcaption>
+  </figure>
+
+  <!-- HOME -->
+  <figure id="home">
+    <div class="phone"><div class="screen">
+      <div class="between" style="padding:20px 20px 0">
+        <div style="display:flex;align-items:center;gap:12px">
+          <a href="#profile" aria-label="Profile and settings" class="disp" style="width:44px;height:44px;border-radius:22px;background:var(--dark);color:var(--on-dark);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px">MS</a>
+          <div><div class="small">Good evening</div><div class="disp" style="font-weight:700;font-size:19px">Mehul Shah</div></div>
+        </div>
+        <button class="chipbtn" type="button"><svg class="i s18"><use href="#store"/></svg>All outlets<svg class="i s16"><use href="#down"/></svg></button>
+      </div>
+      <div class="meta" style="padding-top:16px"><span>Today · Sun, 5 Oct</span><span><svg class="i s16"><use href="#sync"/></svg>Updated 2 min ago</span></div>
+      <div class="hero">
+        <div class="between"><span class="lbl">Net sales today · 3 outlets</span><span class="delta">▲ 12% vs last Sun</span></div>
+        <div class="big">₹1,84,260</div>
+        <svg viewBox="0 0 318 60" style="width:100%;height:60px;display:block;margin-top:8px" aria-label="Sales through the day">
+          <polygon points="0,60 0,58 27,57 53,55 80,51 106,46 133,44 159,42 186,40 212,36 239,28 265,17 292,9 318,4 318,60" fill="#FF5C6C" fill-opacity="0.14"/>
+          <polyline points="0,58 27,57 53,55 80,51 106,46 133,44 159,42 186,40 212,36 239,28 265,17 292,9 318,4" fill="none" stroke="#FF6B79" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+          <circle cx="314" cy="5" r="4" fill="#FF6B79" stroke="#201815" stroke-width="2"/>
+        </svg>
+        <div class="between" style="font-size:11px;font-weight:600;color:#A8988F;margin-top:4px"><span>11 AM</span><span>3 PM</span><span>7 PM</span><span>Now</span></div>
+        <div class="stats">
+          <div><small>Bills</small><b>312</b></div>
+          <div><small>Avg bill</small><b>₹591</b></div>
+          <div><small>Guests</small><b>846</b></div>
+        </div>
+      </div>
+      <div class="sec"><b>Live now</b><span>View only</span></div>
+      <div class="grid3 pad">
+        <a href="#tables" class="card" style="padding:14px 12px;color:var(--ink)">
+          <div class="ictile ic-red" style="width:32px;height:32px;border-radius:10px"><svg class="i s18"><use href="#table"/></svg></div>
+          <div class="num" style="font-size:22px;font-weight:800;margin-top:10px">18<span style="font-size:13px;font-weight:600;color:var(--ink-3)"> /42</span></div>
+          <div class="small">Running tables</div>
+        </a>
+        <a href="#bills" class="card" style="padding:14px 12px;color:var(--ink)">
+          <div class="ictile ic-blue" style="width:32px;height:32px;border-radius:10px"><svg class="i s18"><use href="#bill"/></svg></div>
+          <div class="num" style="font-size:22px;font-weight:800;margin-top:10px">₹46.3k</div>
+          <div class="small">On open bills</div>
+        </a>
+        <a href="#bills" class="card" style="padding:14px 12px;color:var(--ink)">
+          <div class="ictile ic-amber" style="width:32px;height:32px;border-radius:10px"><svg class="i s18"><use href="#xcircle"/></svg></div>
+          <div class="num" style="font-size:22px;font-weight:800;margin-top:10px">3</div>
+          <div class="small">Cancelled</div>
+        </a>
+      </div>
+      <div class="sec"><b>Your outlets</b><span>2 online · 1 offline</span></div>
+      <div class="stack pad">
+        <a href="#outlet" class="card" style="color:var(--ink)">
+          <div class="between"><div><div style="font-size:15px;font-weight:700">Spice Court · CG Road</div><div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--green);margin-top:3px"><i class="dot" style="background:var(--green)"></i>Online · synced 1 min ago</div></div>
+          <div style="text-align:right"><div class="num" style="font-size:17px;font-weight:800">₹96,420</div><div class="small">9 tables running</div></div></div>
+          <div class="bar" style="margin-top:12px"><i style="width:52%"></i></div>
+        </a>
+        <a href="#outlet" class="card" style="color:var(--ink)">
+          <div class="between"><div><div style="font-size:15px;font-weight:700">Spice Court · Bopal</div><div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--green);margin-top:3px"><i class="dot" style="background:var(--green)"></i>Online · synced 2 min ago</div></div>
+          <div style="text-align:right"><div class="num" style="font-size:17px;font-weight:800">₹61,780</div><div class="small">6 tables running</div></div></div>
+          <div class="bar" style="margin-top:12px"><i style="width:34%"></i></div>
+        </a>
+        <a href="#outletpc" class="card" style="color:var(--ink);box-shadow:inset 0 0 0 1.5px #EBC48F">
+          <div class="between"><div><div style="font-size:15px;font-weight:700">Spice Court Express · SG Hwy</div><div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--amber);margin-top:3px"><i class="dot" style="background:var(--amber)"></i>Offline 14 min · 6 bills waiting</div></div>
+          <div style="text-align:right"><div class="num" style="font-size:17px;font-weight:800">₹26,060</div><div class="small">as of 8:37 PM</div></div></div>
+          <div class="bar" style="margin-top:12px"><i style="width:14%;background:#C9A27E"></i></div>
+        </a>
+      </div>
+      <div class="sec"><b>Needs your attention</b><a href="#alerts">See all</a></div>
+      <div class="pad"><a href="#billdetail" class="card" style="display:flex;gap:12px;color:var(--ink)">
+        <div class="ictile ic-red"><svg class="i"><use href="#xcircle"/></svg></div>
+        <div><div style="font-size:14px;font-weight:700">Bill #1482 cancelled after KOT</div><div class="small" style="margin-top:2px">₹1,240 · CG Road · Meena (Cashier) · 8:46 PM</div></div>
+      </a></div>
+    </div>
+    <nav class="nav">
+      <a href="#home" class="nb on"><span class="pill"><svg class="i"><use href="#home"/></svg></span>Home</a>
+      <a href="#bills" class="nb"><span class="pill"><svg class="i"><use href="#bill"/></svg></span>Bills</a>
+      <a href="#reports" class="nb"><span class="pill"><svg class="i"><use href="#chart"/></svg></span>Reports</a>
+      <a href="#manage" class="nb"><span class="pill"><svg class="i"><use href="#sliders"/></svg></span>Manage</a>
+      <a href="#alerts" class="nb"><span class="pill"><svg class="i"><use href="#bell"/></svg><span class="badge">4</span></span>Alerts</a>
+    </nav></div>
+    <figcaption><b>Home · all outlets</b><span>One total for every outlet, with a comparison to the same weekday last week. Live counts, each outlet's PC status (an offline PC shows how many bills are still waiting to upload), and the latest risky action.</span></figcaption>
+  </figure>
+
+  <!-- OUTLET -->
+  <figure id="outlet">
+    <div class="phone"><div class="screen">
+      <div class="top">
+        <a href="#home" class="iconbtn" aria-label="Back"><svg class="i s24"><use href="#left"/></svg></a>
+        <div class="t"><b>Spice Court · CG Road</b><span style="color:var(--green)">● Online · synced 1 min ago</span></div>
+        <a href="#outletpc" class="iconbtn solid" aria-label="Outlet PC"><svg class="i"><use href="#monitor"/></svg></a>
+      </div>
+      <div class="pad" style="margin-top:8px"><div class="seg"><button class="on" type="button">Today</button><button type="button">Yesterday</button><button type="button">7 days</button><button type="button">Custom</button></div></div>
+      <div class="pad" style="margin-top:12px"><div class="card">
+        <div class="between"><span class="label">Net sales</span><span class="tag t-green">▲ 9% vs last Sun</span></div>
+        <div class="num" style="font-size:34px;font-weight:800;letter-spacing:-0.6px;margin-top:4px">₹96,420</div>
+        <div style="display:flex;align-items:flex-end;gap:6px;height:84px;margin-top:14px" aria-label="Sales by hour">
+          <i style="flex:1;height:8px;background:#F0D2D5;border-radius:4px"></i><i style="flex:1;height:18px;background:#F0D2D5;border-radius:4px"></i><i style="flex:1;height:34px;background:#F0D2D5;border-radius:4px"></i><i style="flex:1;height:46px;background:#F0D2D5;border-radius:4px"></i><i style="flex:1;height:30px;background:#F0D2D5;border-radius:4px"></i><i style="flex:1;height:16px;background:#F0D2D5;border-radius:4px"></i><i style="flex:1;height:10px;background:#F0D2D5;border-radius:4px"></i><i style="flex:1;height:14px;background:#F0D2D5;border-radius:4px"></i><i style="flex:1;height:28px;background:#F0D2D5;border-radius:4px"></i><i style="flex:1;height:52px;background:#F0D2D5;border-radius:4px"></i><i style="flex:1;height:72px;background:var(--brand);border-radius:4px"></i><i style="flex:1;height:64px;background:#F0D2D5;border-radius:4px"></i><i style="flex:1;height:40px;background:#F0D2D5;border-radius:4px;opacity:.6"></i>
+        </div>
+        <div class="between" style="font-size:11px;font-weight:600;color:var(--ink-3);margin-top:6px"><span>11 AM</span><span>3 PM</span><span>Peak 9 PM · ₹14.2k</span><span>11 PM</span></div>
+        <div class="grid3" style="margin-top:14px;padding-top:14px;border-top:1px solid var(--line)">
+          <div><div class="label">Bills</div><div class="num" style="font-size:18px;font-weight:800">168</div></div>
+          <div><div class="label">Avg bill</div><div class="num" style="font-size:18px;font-weight:800">₹574</div></div>
+          <div><div class="label">Guests</div><div class="num" style="font-size:18px;font-weight:800">452</div></div>
+          <div><div class="label">Discount</div><div class="num" style="font-size:18px;font-weight:800">₹2,140</div></div>
+          <div><div class="label">Tax</div><div class="num" style="font-size:18px;font-weight:800">₹4,590</div></div>
+          <div><div class="label">Expenses</div><div class="num" style="font-size:18px;font-weight:800">₹3,250</div></div>
+        </div>
+      </div></div>
+      <div class="sec"><b>Right now</b><span>as of 8:52 PM</span></div>
+      <div class="grid2 pad">
+        <a href="#tables" class="card" style="color:var(--ink)"><div class="label">Running tables</div><div class="num" style="font-size:24px;font-weight:800;margin-top:4px">9 <span style="font-size:13px;color:var(--ink-3)">of 24</span></div><div class="small">₹22,180 on open bills</div></a>
+        <div class="card"><div class="label">Cash drawer</div><div class="num" style="font-size:24px;font-weight:800;margin-top:4px">₹38,910</div><div class="small">Open since 10:04 AM · Meena</div></div>
+      </div>
+      <div class="sec"><b>Payment mix</b><a href="#reportview">Details</a></div>
+      <div class="pad"><div class="card">
+        <div style="display:flex;height:12px;border-radius:6px;overflow:hidden;gap:2px">
+          <i style="width:46%;background:var(--brand)"></i><i style="width:38%;background:#E0868F"></i><i style="width:12%;background:#3E302B"></i><i style="width:4%;background:#C9A27E"></i>
+        </div>
+        <div class="grid2" style="margin-top:14px;row-gap:12px">
+          <div style="display:flex;gap:8px;align-items:center"><i class="dot" style="background:var(--brand);width:10px;height:10px"></i><div><div style="font-size:13px;font-weight:700">UPI · 46%</div><div class="small num">₹44,350</div></div></div>
+          <div style="display:flex;gap:8px;align-items:center"><i class="dot" style="background:#E0868F;width:10px;height:10px"></i><div><div style="font-size:13px;font-weight:700">Cash · 38%</div><div class="small num">₹36,640</div></div></div>
+          <div style="display:flex;gap:8px;align-items:center"><i class="dot" style="background:#3E302B;width:10px;height:10px"></i><div><div style="font-size:13px;font-weight:700">Card · 12%</div><div class="small num">₹11,570</div></div></div>
+          <div style="display:flex;gap:8px;align-items:center"><i class="dot" style="background:#C9A27E;width:10px;height:10px"></i><div><div style="font-size:13px;font-weight:700">Due · 4%</div><div class="small num">₹3,860</div></div></div>
+        </div>
+      </div></div>
+      <div class="sec"><b>Top items</b><a href="#reportview">All items</a></div>
+      <div class="pad"><div class="list">
+        <div class="li"><div class="ictile ic-gray num" style="font-weight:800">1</div><div class="grow"><b>Paneer Tikka</b><span>64 sold</span></div><div class="end"><b>₹20,480</b></div></div>
+        <div class="li"><div class="ictile ic-gray num" style="font-weight:800">2</div><div class="grow"><b>Dal Makhani</b><span>48 sold</span></div><div class="end"><b>₹13,440</b></div></div>
+        <div class="li"><div class="ictile ic-gray num" style="font-weight:800">3</div><div class="grow"><b>Butter Naan</b><span>212 sold</span></div><div class="end"><b>₹12,720</b></div></div>
+      </div></div>
+    </div>
+    <nav class="nav">
+      <a href="#home" class="nb on"><span class="pill"><svg class="i"><use href="#home"/></svg></span>Home</a>
+      <a href="#bills" class="nb"><span class="pill"><svg class="i"><use href="#bill"/></svg></span>Bills</a>
+      <a href="#reports" class="nb"><span class="pill"><svg class="i"><use href="#chart"/></svg></span>Reports</a>
+      <a href="#manage" class="nb"><span class="pill"><svg class="i"><use href="#sliders"/></svg></span>Manage</a>
+      <a href="#alerts" class="nb"><span class="pill"><svg class="i"><use href="#bell"/></svg><span class="badge">4</span></span>Alerts</a>
+    </nav></div>
+    <figcaption><b>Outlet live</b><span>Today, yesterday, 7 days or any range for one outlet: sales by hour, bills, guests, discount, tax, expenses, cash drawer, payment mix, top items.</span></figcaption>
+  </figure>
+
+  <!-- TABLES -->
+  <figure id="tables">
+    <div class="phone"><div class="screen">
+      <div class="top">
+        <a href="#outlet" class="iconbtn" aria-label="Back"><svg class="i s24"><use href="#left"/></svg></a>
+        <div class="t"><b>Running tables</b><span>CG Road · updated 2 min ago</span></div>
+        <span class="tag t-gray" style="margin-right:8px"><svg class="i s16"><use href="#eye"/></svg>View only</span>
+      </div>
+      <div class="chips" style="margin-top:6px"><span class="chip on">All <em>9/24</em></span><span class="chip">AC Hall <em>5/12</em></span><span class="chip">Garden <em>3/8</em></span><span class="chip">Rooftop <em>1/4</em></span></div>
+      <div class="pad" style="margin-top:12px">
+        <div class="grid3" style="gap:8px">
+          <a href="#billdetail" style="background:var(--brand-soft);border-radius:16px;padding:10px;color:var(--ink);min-height:92px"><div class="between"><b class="disp" style="font-size:17px">T1</b><span class="small" style="font-size:11px">4</span></div><div class="num" style="font-weight:800;font-size:15px;margin-top:8px">₹2,340</div><div class="small" style="font-size:11px">48 min · Ravi</div></a>
+          <a href="#billdetail" style="background:var(--surface);border-radius:16px;padding:10px;color:var(--ink-3);min-height:92px;border:1px dashed var(--line-2)"><b class="disp" style="font-size:17px">T2</b><div class="small" style="font-size:11px;margin-top:22px">Free</div></a>
+          <a href="#billdetail" style="background:var(--amber-soft);border-radius:16px;padding:10px;color:var(--ink);min-height:92px"><div class="between"><b class="disp" style="font-size:17px">T3</b><span class="small" style="font-size:11px">2</span></div><div class="num" style="font-weight:800;font-size:15px;margin-top:8px">₹1,180</div><div class="small" style="font-size:11px;color:var(--amber)">Bill printed</div></a>
+          <a href="#billdetail" style="background:var(--brand-soft);border-radius:16px;padding:10px;color:var(--ink);min-height:92px"><div class="between"><b class="disp" style="font-size:17px">T4</b><span class="small" style="font-size:11px">6</span></div><div class="num" style="font-weight:800;font-size:15px;margin-top:8px">₹4,620</div><div class="small" style="font-size:11px">22 min · Kiran</div></a>
+          <a href="#billdetail" style="background:var(--brand-soft);border-radius:16px;padding:10px;color:var(--ink);min-height:92px;box-shadow:inset 0 0 0 2px var(--brand)"><div class="between"><b class="disp" style="font-size:17px">T5</b><span class="small" style="font-size:11px">3</span></div><div class="num" style="font-weight:800;font-size:15px;margin-top:8px">₹1,960</div><div class="small" style="font-size:11px;color:var(--brand);font-weight:800">1 h 52 min</div></a>
+          <a href="#billdetail" style="background:var(--surface);border-radius:16px;padding:10px;color:var(--ink-3);min-height:92px;border:1px dashed var(--line-2)"><b class="disp" style="font-size:17px">T6</b><div class="small" style="font-size:11px;margin-top:22px">Free</div></a>
+          <a href="#billdetail" style="background:var(--brand-soft);border-radius:16px;padding:10px;color:var(--ink);min-height:92px"><div class="between"><b class="disp" style="font-size:17px">T8</b><span class="small" style="font-size:11px">2</span></div><div class="num" style="font-weight:800;font-size:15px;margin-top:8px">₹760</div><div class="small" style="font-size:11px">9 min · Ravi</div></a>
+          <a href="#billdetail" style="background:var(--surface);border-radius:16px;padding:10px;color:var(--ink-3);min-height:92px;border:1px dashed var(--line-2)"><b class="disp" style="font-size:17px">T9</b><div class="small" style="font-size:11px;margin-top:22px">Free</div></a>
+          <a href="#billdetail" style="background:var(--surface);border-radius:16px;padding:10px;color:var(--ink-3);min-height:92px;border:1px dashed var(--line-2)"><b class="disp" style="font-size:17px">T10</b><div class="small" style="font-size:11px;margin-top:22px">Free</div></a>
+          <a href="#billdetail" style="background:var(--brand-soft);border-radius:16px;padding:10px;color:var(--ink);min-height:92px"><div class="between"><b class="disp" style="font-size:17px">G1</b><span class="small" style="font-size:11px">5</span></div><div class="num" style="font-weight:800;font-size:15px;margin-top:8px">₹3,240</div><div class="small" style="font-size:11px">35 min · Kiran</div></a>
+          <a href="#billdetail" style="background:var(--brand-soft);border-radius:16px;padding:10px;color:var(--ink);min-height:92px"><div class="between"><b class="disp" style="font-size:17px">G3</b><span class="small" style="font-size:11px">4</span></div><div class="num" style="font-weight:800;font-size:15px;margin-top:8px">₹3,460</div><div class="small" style="font-size:11px">41 min · Ravi</div></a>
+          <a href="#billdetail" style="background:var(--amber-soft);border-radius:16px;padding:10px;color:var(--ink);min-height:92px"><div class="between"><b class="disp" style="font-size:17px">G5</b><span class="small" style="font-size:11px">2</span></div><div class="num" style="font-weight:800;font-size:15px;margin-top:8px">₹1,420</div><div class="small" style="font-size:11px;color:var(--amber)">Bill printed</div></a>
+          <a href="#billdetail" style="background:var(--brand-soft);border-radius:16px;padding:10px;color:var(--ink);min-height:92px"><div class="between"><b class="disp" style="font-size:17px">R1</b><span class="small" style="font-size:11px">4</span></div><div class="num" style="font-weight:800;font-size:15px;margin-top:8px">₹3,200</div><div class="small" style="font-size:11px">27 min · Nilesh</div></a>
+        </div>
+      </div>
+      <div class="pad" style="margin-top:16px"><div class="card" style="display:flex;flex-wrap:wrap;gap:12px 18px;font-size:12px;font-weight:700;color:var(--ink-2)">
+        <span style="display:flex;gap:6px;align-items:center"><i class="dot" style="background:#F0B7BD;width:12px;height:12px;border-radius:4px"></i>Running</span>
+        <span style="display:flex;gap:6px;align-items:center"><i class="dot" style="background:#F2CD95;width:12px;height:12px;border-radius:4px"></i>Bill printed</span>
+        <span style="display:flex;gap:6px;align-items:center"><i class="dot" style="border:2px solid var(--brand);width:12px;height:12px;border-radius:4px"></i>Open over 90 min</span>
+        <span style="display:flex;gap:6px;align-items:center"><i class="dot" style="border:1px dashed #B9AEA6;width:12px;height:12px;border-radius:4px"></i>Free</span>
+      </div></div>
+    </div>
+    <nav class="nav">
+      <a href="#home" class="nb on"><span class="pill"><svg class="i"><use href="#home"/></svg></span>Home</a>
+      <a href="#bills" class="nb"><span class="pill"><svg class="i"><use href="#bill"/></svg></span>Bills</a>
+      <a href="#reports" class="nb"><span class="pill"><svg class="i"><use href="#chart"/></svg></span>Reports</a>
+      <a href="#manage" class="nb"><span class="pill"><svg class="i"><use href="#sliders"/></svg></span>Manage</a>
+      <a href="#alerts" class="nb"><span class="pill"><svg class="i"><use href="#bell"/></svg><span class="badge">4</span></span>Alerts</a>
+    </nav></div>
+    <figcaption><b>Running tables · view only</b><span>The outlet's table layout by section: amount, guests, minutes open and captain. Printed bills and tables open over 90 minutes stand out. Tap a table to see its bill.</span></figcaption>
+  </figure>
+
+  <!-- BILLS -->
+  <figure id="bills">
+    <div class="phone"><div class="screen">
+      <div class="bigtitle"><h3>Bills</h3><button class="iconbtn solid" type="button" aria-label="Search bills"><svg class="i"><use href="#search"/></svg></button></div>
+      <div style="display:flex;gap:8px;padding:6px 16px 0">
+        <button class="chipbtn" type="button"><svg class="i s18"><use href="#store"/></svg>All outlets<svg class="i s16"><use href="#down"/></svg></button>
+        <button class="chipbtn" type="button"><svg class="i s18"><use href="#cal"/></svg>Today<svg class="i s16"><use href="#down"/></svg></button>
+      </div>
+      <div class="chips" style="margin-top:12px"><span class="chip on">All <em>312</em></span><span class="chip">Running <em>18</em></span><span class="chip">Settled <em>291</em></span><span class="chip">Cancelled <em>3</em></span><span class="chip">Edited <em>2</em></span><span class="chip">Due <em>4</em></span><span class="chip">Discount <em>27</em></span></div>
+      <div class="pad" style="margin-top:12px"><div class="list">
+        <a href="#billdetail" class="li"><div class="grow"><b>#1490 · T12 AC Hall</b><span>CG Road · 8:52 PM · UPI</span></div><div class="end"><b>₹2,180</b><span class="tag t-green">Settled</span></div></a>
+        <a href="#billdetail" class="li"><div class="grow"><b>#1488 · Pickup</b><span>Bopal · 8:47 PM · Cash</span></div><div class="end"><b>₹640</b><span class="tag t-green">Settled</span></div></a>
+        <a href="#billdetail" class="li" style="background:#FFF8F8"><div class="grow"><b>#1482 · T7 AC Hall</b><span>CG Road · 8:46 PM · Meena</span></div><div class="end"><b style="text-decoration:line-through;color:var(--ink-3)">₹1,240</b><span class="tag t-red">Cancelled after KOT</span></div></a>
+        <a href="#billdetail" class="li"><div class="grow"><b>#1479 · G3 Garden</b><span>CG Road · since 8:11 PM · Ravi</span></div><div class="end"><b>₹3,460</b><span class="tag t-blue">Running</span></div></a>
+        <a href="#billdetail" class="li"><div class="grow"><b>#1475 · T2</b><span>Bopal · 8:12 PM · Rakesh Patel</span></div><div class="end"><b>₹850</b><span class="tag t-amber">Due</span></div></a>
+        <a href="#billdetail" class="li"><div class="grow"><b>#1466 · R1 Rooftop</b><span>CG Road · 8:05 PM · Card</span></div><div class="end"><b>₹1,150</b><span class="tag t-amber">35% discount</span></div></a>
+        <a href="#billdetail" class="li"><div class="grow"><b>#1431 · T5</b><span>Bopal · 7:20 PM · edited by Arjun</span></div><div class="end"><b>₹1,620</b><span class="tag t-amber">Edited after settle</span></div></a>
+        <a href="#billdetail" class="li"><div class="grow"><b>#1428 · Pickup</b><span>SG Hwy · 7:14 PM · UPI</span></div><div class="end"><b>₹420</b><span class="tag t-green">Settled</span></div></a>
+      </div></div>
+    </div>
+    <nav class="nav">
+      <a href="#home" class="nb"><span class="pill"><svg class="i"><use href="#home"/></svg></span>Home</a>
+      <a href="#bills" class="nb on"><span class="pill"><svg class="i"><use href="#bill"/></svg></span>Bills</a>
+      <a href="#reports" class="nb"><span class="pill"><svg class="i"><use href="#chart"/></svg></span>Reports</a>
+      <a href="#manage" class="nb"><span class="pill"><svg class="i"><use href="#sliders"/></svg></span>Manage</a>
+      <a href="#alerts" class="nb"><span class="pill"><svg class="i"><use href="#bell"/></svg><span class="badge">4</span></span>Alerts</a>
+    </nav></div>
+    <figcaption><b>Bills</b><span>Every bill from every outlet, with quick filters for what owners worry about: cancelled, edited after settle, due, big discounts. Search by bill number, table, customer or mobile.</span></figcaption>
+  </figure>
+
+  <!-- BILL DETAIL -->
+  <figure id="billdetail">
+    <div class="phone"><div class="screen footer-pad" style="padding-bottom:110px">
+      <div class="top">
+        <a href="#bills" class="iconbtn" aria-label="Back"><svg class="i s24"><use href="#left"/></svg></a>
+        <div class="t"><b>Bill #1482</b><span>CG Road · Sun, 5 Oct</span></div>
+        <span class="tag t-red" style="margin-right:8px">Cancelled after KOT</span>
+      </div>
+      <div class="pad" style="margin-top:8px"><div class="card">
+        <div class="grid2" style="row-gap:12px">
+          <div><div class="label">Table</div><div style="font-weight:700">T7 · AC Hall</div></div>
+          <div><div class="label">Guests</div><div style="font-weight:700">4</div></div>
+          <div><div class="label">Captain</div><div style="font-weight:700">Ravi Solanki</div></div>
+          <div><div class="label">Cashier</div><div style="font-weight:700">Meena Joshi</div></div>
+        </div>
+      </div></div>
+      <div class="sec"><b>Items</b><span>2 KOTs</span></div>
+      <div class="pad"><div class="card" style="padding:6px 16px">
+        <div class="small" style="padding:10px 0 4px;display:flex;gap:6px;align-items:center"><svg class="i s16"><use href="#chef"/></svg>KOT 1 · 7:59 PM</div>
+        <div class="between" style="padding:6px 0"><span style="font-weight:600">Paneer Tikka × 1</span><span class="num" style="font-weight:700">₹320</span></div>
+        <div class="between" style="padding:6px 0"><span style="font-weight:600">Veg Manchow Soup × 2</span><span class="num" style="font-weight:700">₹340</span></div>
+        <div class="small" style="padding:12px 0 4px;border-top:1px solid var(--line);margin-top:6px;display:flex;gap:6px;align-items:center"><svg class="i s16"><use href="#chef"/></svg>KOT 2 · 8:21 PM</div>
+        <div class="between" style="padding:6px 0"><span style="font-weight:600">Dal Makhani × 1</span><span class="num" style="font-weight:700">₹280</span></div>
+        <div class="between" style="padding:6px 0 10px"><span style="font-weight:600">Butter Naan × 4</span><span class="num" style="font-weight:700">₹240</span></div>
+        <div style="border-top:1px solid var(--line);padding:10px 0;display:flex;flex-direction:column;gap:6px;font-size:13.5px">
+          <div class="between muted"><span>Subtotal</span><span class="num">₹1,180.00</span></div>
+          <div class="between muted"><span>CGST 2.5%</span><span class="num">₹29.50</span></div>
+          <div class="between muted"><span>SGST 2.5%</span><span class="num">₹29.50</span></div>
+          <div class="between muted"><span>Round off</span><span class="num">₹1.00</span></div>
+          <div class="between" style="font-weight:800;font-size:16px"><span>Total</span><span class="num">₹1,240</span></div>
+        </div>
+      </div></div>
+      <div class="sec"><b>Activity</b><span>Who did what</span></div>
+      <div class="pad"><div class="card" style="display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;gap:12px"><div class="ictile ic-gray" style="width:30px;height:30px;border-radius:15px"><svg class="i s16"><use href="#table"/></svg></div><div><div style="font-weight:700;font-size:14px">Order opened on T7</div><div class="small">7:58 PM · Ravi (Captain App)</div></div></div>
+        <div style="display:flex;gap:12px"><div class="ictile ic-gray" style="width:30px;height:30px;border-radius:15px"><svg class="i s16"><use href="#chef"/></svg></div><div><div style="font-weight:700;font-size:14px">KOT 1 sent · 2 items</div><div class="small">7:59 PM · Ravi</div></div></div>
+        <div style="display:flex;gap:12px"><div class="ictile ic-gray" style="width:30px;height:30px;border-radius:15px"><svg class="i s16"><use href="#chef"/></svg></div><div><div style="font-weight:700;font-size:14px">KOT 2 sent · 2 items</div><div class="small">8:21 PM · Ravi</div></div></div>
+        <div style="display:flex;gap:12px"><div class="ictile ic-red" style="width:30px;height:30px;border-radius:15px"><svg class="i s16"><use href="#xcircle"/></svg></div><div><div style="font-weight:700;font-size:14px">Bill cancelled</div><div class="small">8:46 PM · Meena (Cashier, Web POS)</div><div style="margin-top:6px;background:var(--brand-soft);color:var(--brand-dark);border-radius:10px;padding:8px 10px;font-size:13px;font-weight:600">Reason: Customer left without eating</div></div></div>
+      </div></div>
+    </div>
+    <div class="footer nonav" style="bottom:0;padding-bottom:22px"><a class="btn ghost block" href="#billdetail"><svg class="i"><use href="#share"/></svg>Share bill PDF</a></div>
+    </div>
+    <figcaption><b>Bill detail + activity</b><span>Items grouped by KOT, the real totals, and a timeline of who opened, sent KOTs, discounted, edited, settled or cancelled the bill, and from which device. The owner can share the PDF but cannot change the bill.</span></figcaption>
+  </figure>
+
+  </div>
+</section>
+
+<!-- =============================== FLOW 2 =============================== -->
+<section class="flow" id="flow-reports">
+  <h2>2 · Reports &amp; alerts</h2>
+  <p>Every Web POS report, for any date range, for one outlet or all outlets together, downloaded as PDF or Excel. Push alerts arrive on the phone even when the app is closed.</p>
+  <div class="row">
+
+  <!-- REPORTS -->
+  <figure id="reports">
+    <div class="phone"><div class="screen">
+      <div class="bigtitle"><h3>Reports</h3></div>
+      <div style="display:flex;gap:8px;padding:6px 16px 0">
+        <button class="chipbtn" type="button"><svg class="i s18"><use href="#store"/></svg>All outlets<svg class="i s16"><use href="#down"/></svg></button>
+        <button class="chipbtn" type="button"><svg class="i s18"><use href="#cal"/></svg>1 – 5 Oct 2026<svg class="i s16"><use href="#down"/></svg></button>
+      </div>
+      <div class="chips" style="margin-top:10px"><span class="chip">Today</span><span class="chip">Yesterday</span><span class="chip">Last 7 days</span><span class="chip on">This month</span><span class="chip">Last month</span><span class="chip">Custom</span></div>
+      <div class="sec"><b>Sales</b></div>
+      <div class="pad"><div class="list">
+        <a href="#reportview" class="li"><div class="ictile ic-red"><svg class="i"><use href="#cal"/></svg></div><div class="grow"><b>Day wise sales</b><span>Sales, bills and payment mix per business day</span></div><svg class="i chev"><use href="#right"/></svg></a>
+        <a href="#reportview" class="li"><div class="ictile ic-red"><svg class="i"><use href="#book"/></svg></div><div class="grow"><b>Item wise sales</b><span>Quantity and revenue per item</span></div><svg class="i chev"><use href="#right"/></svg></a>
+        <a href="#reportview" class="li"><div class="ictile ic-red"><svg class="i"><use href="#layers"/></svg></div><div class="grow"><b>Category wise sales</b><span>Revenue by menu category</span></div><svg class="i chev"><use href="#right"/></svg></a>
+        <a href="#reportview" class="li"><div class="ictile ic-red"><svg class="i"><use href="#wallet"/></svg></div><div class="grow"><b>Payment mode</b><span>Cash, UPI, card, due and custom modes</span></div><svg class="i chev"><use href="#right"/></svg></a>
+        <a href="#reportview" class="li"><div class="ictile ic-red"><svg class="i"><use href="#clock"/></svg></div><div class="grow"><b>Hourly sales</b><span>Busy hours across the day</span></div><svg class="i chev"><use href="#right"/></svg></a>
+        <a href="#reportview" class="li"><div class="ictile ic-dark"><svg class="i"><use href="#store"/></svg></div><div class="grow"><b>Outlet comparison</b><span>All outlets side by side</span></div><svg class="i chev"><use href="#right"/></svg></a>
+      </div></div>
+      <div class="sec"><b>Control &amp; finance</b></div>
+      <div class="pad"><div class="list">
+        <a href="#reportview" class="li"><div class="ictile ic-amber"><svg class="i"><use href="#xcircle"/></svg></div><div class="grow"><b>Cancelled &amp; edited bills</b><span>With who did it and the reason</span></div><svg class="i chev"><use href="#right"/></svg></a>
+        <a href="#reportview" class="li"><div class="ictile ic-amber"><svg class="i"><use href="#percent"/></svg></div><div class="grow"><b>Discount report</b><span>Every discount and promo code</span></div><svg class="i chev"><use href="#right"/></svg></a>
+        <a href="#reportview" class="li"><div class="ictile ic-blue"><svg class="i"><use href="#file"/></svg></div><div class="grow"><b>Tax report</b><span>CGST and SGST per business day</span></div><svg class="i chev"><use href="#right"/></svg></a>
+        <a href="#reportview" class="li"><div class="ictile ic-blue"><svg class="i"><use href="#cash"/></svg></div><div class="grow"><b>Cash sessions</b><span>Opening, closing and difference</span></div><svg class="i chev"><use href="#right"/></svg></a>
+        <a href="#reportview" class="li"><div class="ictile ic-blue"><svg class="i"><use href="#wallet"/></svg></div><div class="grow"><b>Due &amp; due received</b><span>Who owes what and what came back</span></div><svg class="i chev"><use href="#right"/></svg></a>
+        <a href="#reportview" class="li"><div class="ictile ic-blue"><svg class="i"><use href="#bill"/></svg></div><div class="grow"><b>Expenses</b><span>By expense head</span></div><svg class="i chev"><use href="#right"/></svg></a>
+      </div></div>
+      <div class="sec"><b>Stock</b></div>
+      <div class="pad"><div class="list">
+        <a href="#reportview" class="li"><div class="ictile ic-green"><svg class="i"><use href="#box"/></svg></div><div class="grow"><b>Stock in hand &amp; ledger</b><span>Every movement with its reason</span></div><svg class="i chev"><use href="#right"/></svg></a>
+        <a href="#reportview" class="li"><div class="ictile ic-green"><svg class="i"><use href="#truck"/></svg></div><div class="grow"><b>Purchases &amp; wastage</b><span>Purchase orders, payments, wastage</span></div><svg class="i chev"><use href="#right"/></svg></a>
+      </div></div>
+    </div>
+    <nav class="nav">
+      <a href="#home" class="nb"><span class="pill"><svg class="i"><use href="#home"/></svg></span>Home</a>
+      <a href="#bills" class="nb"><span class="pill"><svg class="i"><use href="#bill"/></svg></span>Bills</a>
+      <a href="#reports" class="nb on"><span class="pill"><svg class="i"><use href="#chart"/></svg></span>Reports</a>
+      <a href="#manage" class="nb"><span class="pill"><svg class="i"><use href="#sliders"/></svg></span>Manage</a>
+      <a href="#alerts" class="nb"><span class="pill"><svg class="i"><use href="#bell"/></svg><span class="badge">4</span></span>Alerts</a>
+    </nav></div>
+    <figcaption><b>Reports</b><span>One outlet or all outlets together, any date range. Same numbers as the Web POS, because they come from the same synced bills.</span></figcaption>
+  </figure>
+
+  <!-- REPORT VIEW -->
+  <figure id="reportview">
+    <div class="phone"><div class="screen" style="padding-bottom:180px">
+      <div class="top">
+        <a href="#reports" class="iconbtn" aria-label="Back"><svg class="i s24"><use href="#left"/></svg></a>
+        <div class="t"><b>Item wise sales</b><span>All outlets · 1 – 5 Oct 2026</span></div>
+      </div>
+      <div class="pad" style="margin-top:6px"><div class="seg"><button class="on" type="button">By item</button><button type="button">By category</button><button type="button">By outlet</button></div></div>
+      <div class="grid2 pad" style="margin-top:12px">
+        <div class="card"><div class="label">Items sold</div><div class="num" style="font-size:24px;font-weight:800;margin-top:2px">4,812</div></div>
+        <div class="card"><div class="label">Revenue</div><div class="num" style="font-size:24px;font-weight:800;margin-top:2px">₹9,64,300</div></div>
+      </div>
+      <div class="pad" style="margin-top:10px"><div class="card" style="display:flex;flex-direction:column;gap:14px">
+        <div><div class="between"><span style="font-weight:700;font-size:14px">Paneer Tikka</span><span class="num" style="font-weight:800">₹1,31,840</span></div><div class="between small" style="margin:2px 0 6px"><span>412 sold</span><span>13.7%</span></div><div class="bar"><i style="width:100%"></i></div></div>
+        <div><div class="between"><span style="font-weight:700;font-size:14px">Butter Naan</span><span class="num" style="font-weight:800">₹83,160</span></div><div class="between small" style="margin:2px 0 6px"><span>1,386 sold</span><span>8.6%</span></div><div class="bar"><i style="width:63%"></i></div></div>
+        <div><div class="between"><span style="font-weight:700;font-size:14px">Dal Makhani</span><span class="num" style="font-weight:800">₹82,880</span></div><div class="between small" style="margin:2px 0 6px"><span>296 sold</span><span>8.6%</span></div><div class="bar"><i style="width:63%"></i></div></div>
+        <div><div class="between"><span style="font-weight:700;font-size:14px">Veg Biryani</span><span class="num" style="font-weight:800">₹71,400</span></div><div class="between small" style="margin:2px 0 6px"><span>238 sold</span><span>7.4%</span></div><div class="bar"><i style="width:54%"></i></div></div>
+        <div><div class="between"><span style="font-weight:700;font-size:14px">Masala Chaas</span><span class="num" style="font-weight:800">₹42,120</span></div><div class="between small" style="margin:2px 0 6px"><span>702 sold</span><span>4.4%</span></div><div class="bar"><i style="width:32%"></i></div></div>
+        <div><div class="between"><span style="font-weight:700;font-size:14px">Veg Manchow Soup</span><span class="num" style="font-weight:800">₹36,380</span></div><div class="between small" style="margin:2px 0 6px"><span>214 sold</span><span>3.8%</span></div><div class="bar"><i style="width:28%"></i></div></div>
+        <div><div class="between"><span style="font-weight:700;font-size:14px">Gulab Jamun</span><span class="num" style="font-weight:800">₹31,800</span></div><div class="between small" style="margin:2px 0 6px"><span>318 sold</span><span>3.3%</span></div><div class="bar"><i style="width:24%"></i></div></div>
+      </div></div>
+    </div>
+    <div class="footer">
+      <a class="btn primary" style="flex:1;color:#fff" href="#reportview"><svg class="i"><use href="#download"/></svg>PDF</a>
+      <a class="btn dark" style="flex:1;color:var(--on-dark)" href="#reportview"><svg class="i"><use href="#download"/></svg>Excel</a>
+      <a class="btn ghost" style="width:50px;padding:0" href="#reportview" aria-label="Share"><svg class="i"><use href="#share"/></svg></a>
+    </div>
+    <nav class="nav">
+      <a href="#home" class="nb"><span class="pill"><svg class="i"><use href="#home"/></svg></span>Home</a>
+      <a href="#bills" class="nb"><span class="pill"><svg class="i"><use href="#bill"/></svg></span>Bills</a>
+      <a href="#reports" class="nb on"><span class="pill"><svg class="i"><use href="#chart"/></svg></span>Reports</a>
+      <a href="#manage" class="nb"><span class="pill"><svg class="i"><use href="#sliders"/></svg></span>Manage</a>
+      <a href="#alerts" class="nb"><span class="pill"><svg class="i"><use href="#bell"/></svg><span class="badge">4</span></span>Alerts</a>
+    </nav></div>
+    <figcaption><b>Report + download</b><span>Each report shows a visual summary on the phone. PDF is ready for WhatsApp, and Excel (.xlsx) is for the accountant. With "All outlets" the files carry a per-outlet breakdown.</span></figcaption>
+  </figure>
+
+  <!-- ALERTS -->
+  <figure id="alerts">
+    <div class="phone"><div class="screen">
+      <div class="bigtitle"><h3>Alerts</h3><a href="#profile" class="small" style="color:var(--brand)">Alert rules</a></div>
+      <div class="chips" style="margin-top:6px"><span class="chip on">All <em>4 new</em></span><span class="chip">Risky actions</span><span class="chip">Outlet PC</span><span class="chip">Stock</span><span class="chip">Day summary</span></div>
+      <div class="sec" style="padding-top:14px"><b>Today</b><a href="#alerts">Mark all read</a></div>
+      <div class="stack pad">
+        <a href="#outletpc" class="card" style="display:flex;gap:12px;color:var(--ink)"><div class="ictile ic-amber"><svg class="i"><use href="#wifioff"/></svg></div><div class="grow" style="flex:1"><div class="between"><b style="font-size:14px">SG Hwy PC is offline</b><i class="dot" style="background:var(--brand)"></i></div><div class="small" style="margin-top:2px">No contact for 14 min · 6 bills waiting to upload · 9:12 PM</div></div></a>
+        <a href="#billdetail" class="card" style="display:flex;gap:12px;color:var(--ink)"><div class="ictile ic-red"><svg class="i"><use href="#xcircle"/></svg></div><div style="flex:1"><div class="between"><b style="font-size:14px">Bill #1482 cancelled after KOT</b><i class="dot" style="background:var(--brand)"></i></div><div class="small" style="margin-top:2px">₹1,240 · CG Road · Meena (Cashier) · 8:46 PM</div></div></a>
+        <a href="#billdetail" class="card" style="display:flex;gap:12px;color:var(--ink)"><div class="ictile ic-red"><svg class="i"><use href="#percent"/></svg></div><div style="flex:1"><div class="between"><b style="font-size:14px">35% discount on bill #1466</b><i class="dot" style="background:var(--brand)"></i></div><div class="small" style="margin-top:2px">₹620 off · above your 20% limit · CG Road · Arjun · 8:05 PM</div></div></a>
+        <a href="#stock" class="card" style="display:flex;gap:12px;color:var(--ink)"><div class="ictile ic-green"><svg class="i"><use href="#box"/></svg></div><div style="flex:1"><div class="between"><b style="font-size:14px">Paneer is running low</b><i class="dot" style="background:var(--brand)"></i></div><div class="small" style="margin-top:2px">1.8 kg left · minimum 5 kg · CG Road · 7:40 PM</div></div></a>
+        <a href="#billdetail" class="card" style="display:flex;gap:12px;color:var(--ink);opacity:.82"><div class="ictile ic-amber"><svg class="i"><use href="#edit"/></svg></div><div style="flex:1"><b style="font-size:14px">Settled bill #1431 edited</b><div class="small" style="margin-top:2px">₹1,980 → ₹1,620 · Bopal · Arjun (Manager) · 7:31 PM</div></div></a>
+        <a href="#outletpc" class="card" style="display:flex;gap:12px;color:var(--ink);opacity:.82"><div class="ictile ic-green"><svg class="i"><use href="#check"/></svg></div><div style="flex:1"><b style="font-size:14px">Bopal PC is back online</b><div class="small" style="margin-top:2px">Was offline 18 min · all bills uploaded · 11:20 AM</div></div></a>
+      </div>
+      <div class="sec"><b>Yesterday</b></div>
+      <div class="stack pad">
+        <a href="#daysummary" class="card" style="display:flex;gap:12px;color:var(--on-dark);background:var(--dark)"><div class="ictile" style="background:#3A2E29;color:#FFD08A"><svg class="i"><use href="#moon"/></svg></div><div style="flex:1"><b style="font-size:14px">Day summary · Sat, 4 Oct</b><div style="font-size:12.5px;font-weight:600;color:var(--on-dark-2);margin-top:2px">₹2,41,800 across 3 outlets · 398 bills · tap for details</div></div></a>
+        <a href="#reportview" class="card" style="display:flex;gap:12px;color:var(--ink);opacity:.82"><div class="ictile ic-blue"><svg class="i"><use href="#cash"/></svg></div><div style="flex:1"><b style="font-size:14px">Cash short by ₹200 at closing</b><div class="small" style="margin-top:2px">Bopal · closed by Meena · 11:42 PM</div></div></a>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="#home" class="nb"><span class="pill"><svg class="i"><use href="#home"/></svg></span>Home</a>
+      <a href="#bills" class="nb"><span class="pill"><svg class="i"><use href="#bill"/></svg></span>Bills</a>
+      <a href="#reports" class="nb"><span class="pill"><svg class="i"><use href="#chart"/></svg></span>Reports</a>
+      <a href="#manage" class="nb"><span class="pill"><svg class="i"><use href="#sliders"/></svg></span>Manage</a>
+      <a href="#alerts" class="nb on"><span class="pill"><svg class="i"><use href="#bell"/></svg><span class="badge">4</span></span>Alerts</a>
+    </nav></div>
+    <figcaption><b>Alerts</b><span>Four kinds, each also sent as a push notification: outlet PC offline/back online, risky actions (cancel after KOT, big discount, edited settled bill, cash difference), low stock, and the nightly day summary. Tapping an alert opens the bill, outlet or item.</span></figcaption>
+  </figure>
+
+  <!-- DAY SUMMARY -->
+  <figure id="daysummary">
+    <div class="phone"><div class="screen nonav" style="padding-bottom:110px">
+      <div style="background:var(--dark);color:var(--on-dark);padding:14px 12px 24px;border-radius:0 0 28px 28px">
+        <div class="top" style="padding:0"><a href="#alerts" class="iconbtn" style="color:var(--on-dark)" aria-label="Back"><svg class="i s24"><use href="#left"/></svg></a><div class="t"><b style="color:var(--on-dark)">Day summary</b><span style="color:var(--on-dark-2)">Sat, 4 Oct 2026 · all outlets</span></div></div>
+        <div style="padding:14px 8px 0">
+          <div class="between"><span style="font-size:13px;font-weight:600;color:var(--on-dark-2)">Net sales</span><span class="delta" style="font-size:12px;font-weight:800;color:#9BE3B5;background:#1E3527;padding:4px 9px;border-radius:10px">▲ 6% vs last Sat</span></div>
+          <div class="num" style="font-size:42px;font-weight:800;letter-spacing:-0.8px;margin-top:4px">₹2,41,800</div>
+          <div class="grid3" style="margin-top:14px">
+            <div><div style="font-size:11.5px;font-weight:600;color:var(--on-dark-2)">Bills</div><div class="num" style="font-size:18px;font-weight:700">398</div></div>
+            <div><div style="font-size:11.5px;font-weight:600;color:var(--on-dark-2)">Avg bill</div><div class="num" style="font-size:18px;font-weight:700">₹608</div></div>
+            <div><div style="font-size:11.5px;font-weight:600;color:var(--on-dark-2)">Guests</div><div class="num" style="font-size:18px;font-weight:700">1,092</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="sec"><b>By outlet</b></div>
+      <div class="pad"><div class="card" style="display:flex;flex-direction:column;gap:14px">
+        <div><div class="between"><span style="font-weight:700">CG Road</span><span class="num" style="font-weight:800">₹1,24,600</span></div><div class="bar" style="margin-top:6px"><i style="width:100%"></i></div></div>
+        <div><div class="between"><span style="font-weight:700">Bopal</span><span class="num" style="font-weight:800">₹82,300</span></div><div class="bar" style="margin-top:6px"><i style="width:66%"></i></div></div>
+        <div><div class="between"><span style="font-weight:700">SG Hwy</span><span class="num" style="font-weight:800">₹34,900</span></div><div class="bar" style="margin-top:6px"><i style="width:28%"></i></div></div>
+      </div></div>
+      <div class="sec"><b>Worth a look</b></div>
+      <div class="pad"><div class="list">
+        <a href="#bills" class="li"><div class="ictile ic-red"><svg class="i"><use href="#xcircle"/></svg></div><div class="grow"><b>4 bills cancelled</b><span>2 after KOT</span></div><div class="end"><b>₹3,120</b></div></a>
+        <a href="#bills" class="li"><div class="ictile ic-amber"><svg class="i"><use href="#percent"/></svg></div><div class="grow"><b>Discounts</b><span>2 above your 20% limit</span></div><div class="end"><b>₹6,480</b></div></a>
+        <a href="#bills" class="li"><div class="ictile ic-amber"><svg class="i"><use href="#edit"/></svg></div><div class="grow"><b>1 settled bill edited</b><span>Bopal · Arjun</span></div><div class="end"><b>−₹360</b></div></a>
+        <a href="#reportview" class="li"><div class="ictile ic-blue"><svg class="i"><use href="#cash"/></svg></div><div class="grow"><b>Cash difference</b><span>Bopal · closed by Meena</span></div><div class="end"><b style="color:var(--brand)">−₹200</b></div></a>
+        <a href="#reportview" class="li"><div class="ictile ic-gray"><svg class="i"><use href="#wallet"/></svg></div><div class="grow"><b>Expenses</b><span>Vegetables, gas, staff tea</span></div><div class="end"><b>₹12,300</b></div></a>
+      </div></div>
+    </div>
+    <div class="footer nonav"><a class="btn primary block" style="color:#fff" href="#daysummary"><svg class="i"><use href="#share"/></svg>Share summary</a></div>
+    </div>
+    <figcaption><b>Nightly day summary</b><span>Sent as a push at the time the owner picks (default 11:30 PM). It covers each outlet's business day, the outlet split, and everything worth checking: cancellations, discounts, edits, cash difference, expenses.</span></figcaption>
+  </figure>
+
+  </div>
+</section>
+
+<!-- =============================== FLOW 3 =============================== -->
+<section class="flow" id="flow-manage">
+  <h2>3 · Manage the outlet (no billing)</h2>
+  <p>Changes save to the BillerPe cloud and reach the outlet PC within about a minute while it is online. If the PC is offline, they apply when it reconnects, and the app shows "Waiting for outlet PC" until then. Printers stay on the outlet PC.</p>
+  <div class="row">
+
+  <!-- MANAGE -->
+  <figure id="manage">
+    <div class="phone"><div class="screen">
+      <div class="bigtitle"><h3>Manage</h3></div>
+      <div style="padding:6px 16px 0"><button class="chipbtn" type="button"><svg class="i s18"><use href="#store"/></svg>Spice Court · CG Road<svg class="i s16"><use href="#down"/></svg></button></div>
+      <div class="pad" style="margin-top:12px"><div class="banner" style="background:var(--blue-soft);color:#173E8F"><svg class="i s18"><use href="#sync"/></svg><span>Changes reach the CG Road PC in about a minute. The PC is online now.</span></div></div>
+      <div class="grid2 pad" style="margin-top:12px">
+        <a href="#menu" class="card" style="color:var(--ink);min-height:118px"><div class="ictile ic-red"><svg class="i"><use href="#book"/></svg></div><b style="display:block;margin-top:12px;font-size:15px">Menu</b><span class="small">148 items · 6 off</span></a>
+        <a href="#staff" class="card" style="color:var(--ink);min-height:118px"><div class="ictile ic-blue"><svg class="i"><use href="#users"/></svg></div><b style="display:block;margin-top:12px;font-size:15px">Staff &amp; access</b><span class="small">14 staff · 1 disabled</span></a>
+        <a href="#manage" class="card" style="color:var(--ink);min-height:118px"><div class="ictile ic-amber"><svg class="i"><use href="#table"/></svg></div><b style="display:block;margin-top:12px;font-size:15px">Tables &amp; sections</b><span class="small">24 tables · 3 sections</span></a>
+        <a href="#stock" class="card" style="color:var(--ink);min-height:118px"><div class="ictile ic-green"><svg class="i"><use href="#box"/></svg></div><b style="display:block;margin-top:12px;font-size:15px">Stock</b><span class="small" style="color:var(--brand)">5 items low</span></a>
+      </div>
+      <div class="sec"><b>Settings</b></div>
+      <div class="pad"><div class="list">
+        <a href="#manage" class="li"><div class="ictile ic-gray"><svg class="i"><use href="#file"/></svg></div><div class="grow"><b>Tax &amp; bill charges</b><span>GST 5% · service charge off</span></div><svg class="i chev"><use href="#right"/></svg></a>
+        <a href="#manage" class="li"><div class="ictile ic-gray"><svg class="i"><use href="#wallet"/></svg></div><div class="grow"><b>Payment modes</b><span>Cash, UPI, Card, Due + 1 custom</span></div><svg class="i chev"><use href="#right"/></svg></a>
+        <a href="#manage" class="li"><div class="ictile ic-gray"><svg class="i"><use href="#tag"/></svg></div><div class="grow"><b>Discounts &amp; promo codes</b><span>3 active</span></div><svg class="i chev"><use href="#right"/></svg></a>
+        <a href="#manage" class="li"><div class="ictile ic-gray"><svg class="i"><use href="#cash"/></svg></div><div class="grow"><b>Expense heads</b><span>9 heads</span></div><svg class="i chev"><use href="#right"/></svg></a>
+        <a href="#outletpc" class="li"><div class="ictile ic-gray"><svg class="i"><use href="#monitor"/></svg></div><div class="grow"><b>Outlet PC</b><span style="color:var(--green)">Online · v1.1.1</span></div><svg class="i chev"><use href="#right"/></svg></a>
+      </div></div>
+    </div>
+    <nav class="nav">
+      <a href="#home" class="nb"><span class="pill"><svg class="i"><use href="#home"/></svg></span>Home</a>
+      <a href="#bills" class="nb"><span class="pill"><svg class="i"><use href="#bill"/></svg></span>Bills</a>
+      <a href="#reports" class="nb"><span class="pill"><svg class="i"><use href="#chart"/></svg></span>Reports</a>
+      <a href="#manage" class="nb on"><span class="pill"><svg class="i"><use href="#sliders"/></svg></span>Manage</a>
+      <a href="#alerts" class="nb"><span class="pill"><svg class="i"><use href="#bell"/></svg><span class="badge">4</span></span>Alerts</a>
+    </nav></div>
+    <figcaption><b>Manage</b><span>Per outlet. Everything the owner can change from the phone, with a clear note on when the change reaches the outlet PC.</span></figcaption>
+  </figure>
+
+  <!-- MENU -->
+  <figure id="menu">
+    <div class="phone"><div class="screen">
+      <div class="top">
+        <a href="#manage" class="iconbtn" aria-label="Back"><svg class="i s24"><use href="#left"/></svg></a>
+        <div class="t"><b>Menu</b><span>CG Road · 148 items</span></div>
+        <a href="#menu" class="btn primary" style="height:40px;border-radius:20px;padding:0 14px;font-size:13px;color:#fff;margin-right:4px"><svg class="i s18"><use href="#plus"/></svg>Item</a>
+      </div>
+      <div class="pad" style="margin-top:6px"><label style="display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line-2);border-radius:14px;height:46px;padding:0 12px"><svg class="i s18 muted"><use href="#search"/></svg><input aria-label="Search items" placeholder="Search item or short code" style="border:0;outline:0;flex:1;font:600 14px Manrope,sans-serif;background:transparent"></label></div>
+      <div class="chips" style="margin-top:10px"><span class="chip on">All <em>148</em></span><span class="chip">Starters <em>24</em></span><span class="chip">Main course <em>38</em></span><span class="chip">Breads <em>16</em></span><span class="chip">Beverages <em>22</em></span></div>
+      <div class="pad" style="margin-top:10px"><div class="list">
+        <div class="li"><span style="width:14px;height:14px;border:1.5px solid var(--green);border-radius:3px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="dot" style="background:var(--green);width:6px;height:6px"></i></span><div class="grow"><b>Paneer Tikka</b><span><span class="num" style="color:var(--ink);font-weight:800">₹340</span> · was ₹320 · <span style="color:var(--blue)">Syncing…</span></span></div><button class="switch on" type="button" aria-label="Available"></button></div>
+        <div class="li"><span style="width:14px;height:14px;border:1.5px solid var(--green);border-radius:3px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="dot" style="background:var(--green);width:6px;height:6px"></i></span><div class="grow"><b>Veg Manchow Soup</b><span>₹170 · code VMS</span></div><button class="switch on" type="button" aria-label="Available"></button></div>
+        <div class="li"><span style="width:14px;height:14px;border:1.5px solid var(--green);border-radius:3px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="dot" style="background:var(--green);width:6px;height:6px"></i></span><div class="grow"><b>Hara Bhara Kabab</b><span style="color:var(--amber)">Off · out of stock</span></div><button class="switch" type="button" aria-label="Available"></button></div>
+        <div class="li"><span style="width:14px;height:14px;border:1.5px solid var(--brand);border-radius:3px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i style="width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-bottom:7px solid var(--brand)"></i></span><div class="grow"><b>Chicken Tikka</b><span>Half ₹260 · Full ₹480</span></div><button class="switch on" type="button" aria-label="Available"></button></div>
+        <div class="li"><span style="width:14px;height:14px;border:1.5px solid var(--green);border-radius:3px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="dot" style="background:var(--green);width:6px;height:6px"></i></span><div class="grow"><b>Dal Makhani</b><span>₹280 · 2 addon groups</span></div><button class="switch on" type="button" aria-label="Available"></button></div>
+        <div class="li"><span style="width:14px;height:14px;border:1.5px solid var(--green);border-radius:3px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="dot" style="background:var(--green);width:6px;height:6px"></i></span><div class="grow"><b>Butter Naan</b><span>₹60 · code BN</span></div><button class="switch on" type="button" aria-label="Available"></button></div>
+        <div class="li"><span style="width:14px;height:14px;border:1.5px solid var(--green);border-radius:3px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="dot" style="background:var(--green);width:6px;height:6px"></i></span><div class="grow"><b>Masala Chaas</b><span>₹60 · code MC</span></div><button class="switch on" type="button" aria-label="Available"></button></div>
+      </div></div>
+    </div>
+    <div class="toast"><svg class="i" style="color:#9BE3B5"><use href="#check"/></svg><span>Price saved. CG Road PC gets it in about a minute.</span></div>
+    <nav class="nav">
+      <a href="#home" class="nb"><span class="pill"><svg class="i"><use href="#home"/></svg></span>Home</a>
+      <a href="#bills" class="nb"><span class="pill"><svg class="i"><use href="#bill"/></svg></span>Bills</a>
+      <a href="#reports" class="nb"><span class="pill"><svg class="i"><use href="#chart"/></svg></span>Reports</a>
+      <a href="#manage" class="nb on"><span class="pill"><svg class="i"><use href="#sliders"/></svg></span>Manage</a>
+      <a href="#alerts" class="nb"><span class="pill"><svg class="i"><use href="#bell"/></svg><span class="badge">4</span></span>Alerts</a>
+    </nav></div>
+    <figcaption><b>Menu</b><span>Switch an item off when it runs out, change prices, and add or edit items, categories, variants and addons. Each change shows "Syncing…" until the outlet PC confirms it.</span></figcaption>
+  </figure>
+
+  <!-- STAFF -->
+  <figure id="staff">
+    <div class="phone"><div class="screen">
+      <div class="top">
+        <a href="#manage" class="iconbtn" aria-label="Back"><svg class="i s24"><use href="#left"/></svg></a>
+        <div class="t"><b>Staff &amp; access</b><span>CG Road · 14 staff</span></div>
+        <a href="#staffedit" class="btn primary" style="height:40px;border-radius:20px;padding:0 14px;font-size:13px;color:#fff;margin-right:4px"><svg class="i s18"><use href="#plus"/></svg>Staff</a>
+      </div>
+      <div class="chips" style="margin-top:6px"><span class="chip on">All <em>14</em></span><span class="chip">Manager <em>2</em></span><span class="chip">Cashier <em>3</em></span><span class="chip">Captain <em>6</em></span><span class="chip">Kitchen <em>2</em></span><span class="chip">Inventory <em>1</em></span></div>
+      <div class="pad" style="margin-top:12px"><div class="list">
+        <a href="#staffedit" class="li"><div class="ictile ic-dark disp" style="border-radius:18px;font-weight:700;font-size:13px">AM</div><div class="grow"><b>Arjun Mehta</b><span>Manager · 98790 ••• 410</span></div><span class="tag t-green">Active</span><svg class="i chev"><use href="#right"/></svg></a>
+        <a href="#staffedit" class="li"><div class="ictile ic-red disp" style="border-radius:18px;font-weight:700;font-size:13px">MJ</div><div class="grow"><b>Meena Joshi</b><span>Cashier · 99090 ••• 233</span></div><span class="tag t-green">Active</span><svg class="i chev"><use href="#right"/></svg></a>
+        <a href="#staffedit" class="li"><div class="ictile ic-blue disp" style="border-radius:18px;font-weight:700;font-size:13px">RS</div><div class="grow"><b>Ravi Solanki</b><span>Captain · 97250 ••• 118</span></div><span class="tag t-green">Active</span><svg class="i chev"><use href="#right"/></svg></a>
+        <a href="#staffedit" class="li"><div class="ictile ic-blue disp" style="border-radius:18px;font-weight:700;font-size:13px">KD</div><div class="grow"><b>Kiran Desai</b><span>Captain · 96620 ••• 905</span></div><span class="tag t-green">Active</span><svg class="i chev"><use href="#right"/></svg></a>
+        <a href="#staffedit" class="li"><div class="ictile ic-amber disp" style="border-radius:18px;font-weight:700;font-size:13px">SB</div><div class="grow"><b>Suresh Bhatt</b><span>Kitchen Staff · KDS: Main kitchen</span></div><span class="tag t-green">Active</span><svg class="i chev"><use href="#right"/></svg></a>
+        <a href="#staffedit" class="li"><div class="ictile ic-green disp" style="border-radius:18px;font-weight:700;font-size:13px">PS</div><div class="grow"><b>Pooja Shah</b><span>Inventory Manager</span></div><span class="tag t-green">Active</span><svg class="i chev"><use href="#right"/></svg></a>
+        <a href="#staffedit" class="li" style="opacity:.7"><div class="ictile ic-gray disp" style="border-radius:18px;font-weight:700;font-size:13px">NR</div><div class="grow"><b>Nilesh Rana</b><span>Captain · left on 28 Sep</span></div><span class="tag t-gray">Disabled</span><svg class="i chev"><use href="#right"/></svg></a>
+      </div></div>
+    </div>
+    <nav class="nav">
+      <a href="#home" class="nb"><span class="pill"><svg class="i"><use href="#home"/></svg></span>Home</a>
+      <a href="#bills" class="nb"><span class="pill"><svg class="i"><use href="#bill"/></svg></span>Bills</a>
+      <a href="#reports" class="nb"><span class="pill"><svg class="i"><use href="#chart"/></svg></span>Reports</a>
+      <a href="#manage" class="nb on"><span class="pill"><svg class="i"><use href="#sliders"/></svg></span>Manage</a>
+      <a href="#alerts" class="nb"><span class="pill"><svg class="i"><use href="#bell"/></svg><span class="badge">4</span></span>Alerts</a>
+    </nav></div>
+    <figcaption><b>Staff &amp; access</b><span>Every staff member at the outlet, filtered by role. Add new staff, or switch someone off the day they leave. Disabling a person stops their logins on the Web POS and Captain App.</span></figcaption>
+  </figure>
+
+  <!-- STAFF EDIT -->
+  <figure id="staffedit">
+    <div class="phone"><div class="screen nonav" style="padding-bottom:110px">
+      <div class="top">
+        <a href="#staff" class="iconbtn" aria-label="Back"><svg class="i s24"><use href="#left"/></svg></a>
+        <div class="t"><b>Meena Joshi</b><span>Cashier · CG Road</span></div>
+      </div>
+      <div class="pad stack" style="margin-top:6px">
+        <label class="field"><span>Name</span><input value="Meena Joshi"></label>
+        <label class="field"><span>Mobile (login)</span><input value="99090 41233" inputmode="numeric"></label>
+        <label class="field"><span>Role</span><select><option>Cashier</option><option>Manager</option><option>Captain</option><option>Kitchen Staff</option><option>Inventory Manager</option><option>Accountant</option></select></label>
+        <div class="grid2"><a class="btn ghost" href="#staffedit" style="font-size:14px;color:var(--ink)"><svg class="i s18"><use href="#key"/></svg>Reset PIN</a><a class="btn ghost" href="#staffedit" style="font-size:14px;color:var(--ink)"><svg class="i s18"><use href="#lock"/></svg>Reset password</a></div>
+        <div class="card between" style="padding:12px 14px"><div><b style="font-size:14px">Active</b><div class="small">Off = cannot log in anywhere</div></div><button class="switch on" type="button" aria-label="Active"></button></div>
+      </div>
+      <div class="sec"><b>Permissions</b><span>2 changed from Cashier</span></div>
+      <div class="pad"><div class="card" style="padding:10px 14px">
+        <div style="display:grid;grid-template-columns:1fr repeat(4,44px);align-items:center;font-size:11px;font-weight:800;color:var(--ink-2);padding-bottom:6px;text-align:center"><span style="text-align:left">Module</span><span>View</span><span>Add</span><span>Edit</span><span>Delete</span></div>
+        <div style="display:grid;grid-template-columns:1fr repeat(4,44px);align-items:center;min-height:44px;border-top:1px solid var(--line);text-align:center"><span style="text-align:left;font-weight:700;font-size:13.5px">Billing</span><input type="checkbox" checked aria-label="Billing view"><input type="checkbox" checked aria-label="Billing add"><input type="checkbox" checked aria-label="Billing edit"><input type="checkbox" aria-label="Billing delete"></div>
+        <div style="display:grid;grid-template-columns:1fr repeat(4,44px);align-items:center;min-height:44px;border-top:1px solid var(--line);text-align:center"><span style="text-align:left;font-weight:700;font-size:13.5px">Orders</span><input type="checkbox" checked aria-label="Orders view"><input type="checkbox" checked aria-label="Orders add"><input type="checkbox" checked aria-label="Orders edit"><input type="checkbox" aria-label="Orders delete"></div>
+        <div style="display:grid;grid-template-columns:1fr repeat(4,44px);align-items:center;min-height:44px;border-top:1px solid var(--line);text-align:center;background:#FFF7EC;margin:0 -14px;padding:0 14px"><span style="text-align:left;font-weight:700;font-size:13.5px">Reports <span style="color:var(--amber);font-size:11px">changed</span></span><input type="checkbox" checked aria-label="Reports view"><input type="checkbox" aria-label="Reports add"><input type="checkbox" aria-label="Reports edit"><input type="checkbox" aria-label="Reports delete"></div>
+        <div style="display:grid;grid-template-columns:1fr repeat(4,44px);align-items:center;min-height:44px;border-top:1px solid var(--line);text-align:center"><span style="text-align:left;font-weight:700;font-size:13.5px">Cash session</span><input type="checkbox" checked aria-label="Cash view"><input type="checkbox" checked aria-label="Cash add"><input type="checkbox" checked aria-label="Cash edit"><input type="checkbox" checked aria-label="Cash delete"></div>
+        <div style="display:grid;grid-template-columns:1fr repeat(4,44px);align-items:center;min-height:44px;border-top:1px solid var(--line);text-align:center;background:#FFF7EC;margin:0 -14px;padding:0 14px"><span style="text-align:left;font-weight:700;font-size:13.5px">Expenses <span style="color:var(--amber);font-size:11px">changed</span></span><input type="checkbox" checked aria-label="Expenses view"><input type="checkbox" aria-label="Expenses add"><input type="checkbox" aria-label="Expenses edit"><input type="checkbox" aria-label="Expenses delete"></div>
+        <div style="display:grid;grid-template-columns:1fr repeat(4,44px);align-items:center;min-height:44px;border-top:1px solid var(--line);text-align:center"><span style="text-align:left;font-weight:700;font-size:13.5px">Menu</span><input type="checkbox" checked aria-label="Menu view"><input type="checkbox" aria-label="Menu add"><input type="checkbox" aria-label="Menu edit"><input type="checkbox" aria-label="Menu delete"></div>
+        <a href="#staffedit" class="small" style="display:block;padding:10px 0 4px;color:var(--brand)">Show all 24 modules · Reset to Cashier defaults</a>
+      </div></div>
+    </div>
+    <div class="footer nonav"><a class="btn primary block" style="color:#fff" href="#staff">Save changes</a></div>
+    </div>
+    <figcaption><b>Edit staff + permissions</b><span>Name, mobile, role, reset PIN or password, switch off. Permissions use the same modules and view/add/edit/delete grid as the Web POS, so the owner can give one cashier more or less than the role default.</span></figcaption>
+  </figure>
+
+  <!-- STOCK -->
+  <figure id="stock">
+    <div class="phone"><div class="screen">
+      <div class="top">
+        <a href="#manage" class="iconbtn" aria-label="Back"><svg class="i s24"><use href="#left"/></svg></a>
+        <div class="t"><b>Stock</b><span>CG Road · 142 raw materials</span></div>
+      </div>
+      <div class="chips" style="margin-top:6px"><span class="chip">In hand</span><span class="chip on">Low <em>5</em></span><span class="chip">Ledger</span><span class="chip">Purchases</span><span class="chip">Wastage</span></div>
+      <div class="pad" style="margin-top:12px"><div class="list">
+        <div class="li" style="display:block"><div class="between"><b style="font-size:14.5px">Paneer</b><span class="num" style="font-weight:800;color:var(--brand)">1.8 kg</span></div><div class="bar" style="margin:8px 0 4px"><i style="width:36%"></i></div><div class="small">Minimum 5 kg · used ~6 kg a day</div></div>
+        <div class="li" style="display:block"><div class="between"><b style="font-size:14.5px">Milk</b><span class="num" style="font-weight:800;color:var(--brand)">6 L</span></div><div class="bar" style="margin:8px 0 4px"><i style="width:60%"></i></div><div class="small">Minimum 10 L</div></div>
+        <div class="li" style="display:block"><div class="between"><b style="font-size:14.5px">Butter</b><span class="num" style="font-weight:800;color:var(--brand)">2.2 kg</span></div><div class="bar" style="margin:8px 0 4px"><i style="width:55%"></i></div><div class="small">Minimum 4 kg</div></div>
+        <div class="li" style="display:block"><div class="between"><b style="font-size:14.5px">Fresh Cream</b><span class="num" style="font-weight:800;color:var(--brand)">1.5 L</span></div><div class="bar" style="margin:8px 0 4px"><i style="width:50%"></i></div><div class="small">Minimum 3 L</div></div>
+        <div class="li" style="display:block"><div class="between"><b style="font-size:14.5px">Onion-Tomato Masala</b><span class="num" style="font-weight:800;color:var(--brand)">3 kg</span></div><div class="bar" style="margin:8px 0 4px"><i style="width:75%"></i></div><div class="small">Semi-finished · minimum 4 kg</div></div>
+      </div></div>
+      <div class="sec"><b>Masters</b><span>Owner can edit</span></div>
+      <div class="pad"><div class="list">
+        <a href="#stock" class="li"><div class="ictile ic-green"><svg class="i"><use href="#box"/></svg></div><div class="grow"><b>Raw materials</b><span>Units, minimum levels</span></div><svg class="i chev"><use href="#right"/></svg></a>
+        <a href="#stock" class="li"><div class="ictile ic-green"><svg class="i"><use href="#truck"/></svg></div><div class="grow"><b>Suppliers</b><span>12 suppliers</span></div><svg class="i chev"><use href="#right"/></svg></a>
+        <a href="#stock" class="li"><div class="ictile ic-green"><svg class="i"><use href="#book"/></svg></div><div class="grow"><b>Recipes</b><span>What each item uses</span></div><svg class="i chev"><use href="#right"/></svg></a>
+      </div></div>
+    </div>
+    <nav class="nav">
+      <a href="#home" class="nb"><span class="pill"><svg class="i"><use href="#home"/></svg></span>Home</a>
+      <a href="#bills" class="nb"><span class="pill"><svg class="i"><use href="#bill"/></svg></span>Bills</a>
+      <a href="#reports" class="nb"><span class="pill"><svg class="i"><use href="#chart"/></svg></span>Reports</a>
+      <a href="#manage" class="nb on"><span class="pill"><svg class="i"><use href="#sliders"/></svg></span>Manage</a>
+      <a href="#alerts" class="nb"><span class="pill"><svg class="i"><use href="#bell"/></svg><span class="badge">4</span></span>Alerts</a>
+    </nav></div>
+    <figcaption><b>Stock</b><span>Stock levels, the low list, the ledger, purchases and wastage are view only. The owner can edit the masters (raw materials, suppliers, recipes). Daily entries stay at the outlet.</span></figcaption>
+  </figure>
+
+  <!-- OUTLET PC -->
+  <figure id="outletpc">
+    <div class="phone"><div class="screen">
+      <div class="top">
+        <a href="#outlet" class="iconbtn" aria-label="Back"><svg class="i s24"><use href="#left"/></svg></a>
+        <div class="t"><b>Outlet PC</b><span>Spice Court · CG Road</span></div>
+      </div>
+      <div class="pad" style="margin-top:6px"><div class="card" style="background:var(--green-soft);display:flex;gap:14px;align-items:center">
+        <div class="ictile" style="width:52px;height:52px;border-radius:26px;background:var(--green);color:#fff"><svg class="i s24"><use href="#monitor"/></svg></div>
+        <div><div class="disp" style="font-size:22px;font-weight:800;color:var(--green)">Online</div><div class="small" style="color:#1F5A36">Last heard 40 sec ago</div></div>
+      </div></div>
+      <div class="pad" style="margin-top:10px"><div class="list">
+        <div class="li"><div class="grow"><b>Data synced</b><span>Bills and tables reach the cloud every 3 min</span></div><div class="end"><b style="font-size:14px">8:51 PM</b><span class="small">2 min ago</span></div></div>
+        <div class="li"><div class="grow"><b>Bills waiting to upload</b><span>Created on the PC, not yet in the cloud</span></div><div class="end"><b>0</b></div></div>
+        <div class="li"><div class="grow"><b>BillerPe server</b><span>Installed 30 Sep, 2:14 AM</span></div><div class="end"><b style="font-size:14px">1.1.1</b><span class="tag t-green">Up to date</span></div></div>
+        <div class="li"><div class="grow"><b>Web POS</b><span>Screens version</span></div><div class="end"><b style="font-size:14px">1.2.2</b></div></div>
+        <div class="li"><div class="grow"><b>Registered PC</b><span>COUNTER-PC · since 12 Sep 2026</span></div></div>
+      </div></div>
+      <div class="sec"><b>Offline in the last 7 days</b></div>
+      <div class="pad"><div class="list">
+        <div class="li"><div class="ictile ic-amber"><svg class="i"><use href="#wifioff"/></svg></div><div class="grow"><b>Sat, 4 Oct · 3:10 – 3:42 PM</b><span>32 min · all bills uploaded after</span></div></div>
+        <div class="li"><div class="ictile ic-amber"><svg class="i"><use href="#wifioff"/></svg></div><div class="grow"><b>Wed, 1 Oct · 11:02 – 11:20 AM</b><span>18 min</span></div></div>
+      </div></div>
+      <div class="pad" style="margin-top:14px"><div class="banner" style="background:var(--gray-soft);color:var(--ink-2)"><svg class="i s18"><use href="#info"/></svg><span>Billing keeps working on the outlet PC even when it is offline. Bills reach this app when it reconnects. For PC problems, call BillerPe support.</span></div></div>
+    </div>
+    <nav class="nav">
+      <a href="#home" class="nb on"><span class="pill"><svg class="i"><use href="#home"/></svg></span>Home</a>
+      <a href="#bills" class="nb"><span class="pill"><svg class="i"><use href="#bill"/></svg></span>Bills</a>
+      <a href="#reports" class="nb"><span class="pill"><svg class="i"><use href="#chart"/></svg></span>Reports</a>
+      <a href="#manage" class="nb"><span class="pill"><svg class="i"><use href="#sliders"/></svg></span>Manage</a>
+      <a href="#alerts" class="nb"><span class="pill"><svg class="i"><use href="#bell"/></svg><span class="badge">4</span></span>Alerts</a>
+    </nav></div>
+    <figcaption><b>Outlet PC health · view only</b><span>Is the PC online, when it last synced, how many bills are still on the PC, and which BillerPe version and update status it has, plus recent offline periods.</span></figcaption>
+  </figure>
+
+  <!-- PROFILE -->
+  <figure id="profile">
+    <div class="phone"><div class="screen">
+      <div class="top"><a href="#home" class="iconbtn" aria-label="Back"><svg class="i s24"><use href="#left"/></svg></a><div class="t"><b>Profile &amp; settings</b></div></div>
+      <div class="pad" style="margin-top:6px"><div class="card" style="display:flex;gap:14px;align-items:center;background:var(--dark);color:var(--on-dark)">
+        <div class="disp" style="width:56px;height:56px;border-radius:28px;background:var(--brand);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800">MS</div>
+        <div><div class="disp" style="font-size:19px;font-weight:700">Mehul Shah</div><div style="font-size:12.5px;font-weight:600;color:var(--on-dark-2)">98250 41120 · Owner of 3 outlets</div></div>
+      </div></div>
+      <div class="sec"><b>Language</b></div>
+      <div class="pad"><div class="seg"><button class="on" type="button">English</button><button type="button">हिन्दी</button><button type="button">ગુજરાતી</button></div></div>
+      <div class="sec"><b>Alert rules</b><span>All outlets</span></div>
+      <div class="pad"><div class="list">
+        <div class="li"><div class="grow"><b>Outlet PC offline</b><span>Alert after <u>10 min</u> without contact</span></div><button class="switch on" type="button" aria-label="Outlet offline alerts"></button></div>
+        <div class="li"><div class="grow"><b>Big discount</b><span>Above <u>20%</u> of the bill</span></div><button class="switch on" type="button" aria-label="Discount alerts"></button></div>
+        <div class="li"><div class="grow"><b>Cancelled after KOT</b><span>Food was already sent to the kitchen</span></div><button class="switch on" type="button" aria-label="Cancel alerts"></button></div>
+        <div class="li"><div class="grow"><b>Settled bill edited</b><span>Any change after payment</span></div><button class="switch on" type="button" aria-label="Edit alerts"></button></div>
+        <div class="li"><div class="grow"><b>Cash difference at closing</b><span>Drawer does not match</span></div><button class="switch on" type="button" aria-label="Cash alerts"></button></div>
+        <div class="li"><div class="grow"><b>Low stock</b><span>Below the item's minimum level</span></div><button class="switch on" type="button" aria-label="Low stock alerts"></button></div>
+        <div class="li"><div class="grow"><b>Day summary</b><span>Every night at <u>11:30 PM</u></span></div><button class="switch on" type="button" aria-label="Day summary"></button></div>
+      </div></div>
+      <div class="sec"><b>Security &amp; help</b></div>
+      <div class="pad"><div class="list">
+        <div class="li"><div class="ictile ic-gray"><svg class="i"><use href="#finger"/></svg></div><div class="grow"><b>Fingerprint lock</b><span>Ask when the app opens</span></div><button class="switch on" type="button" aria-label="Fingerprint lock"></button></div>
+        <a href="#profile" class="li"><div class="ictile ic-gray"><svg class="i"><use href="#phone"/></svg></div><div class="grow"><b>Call BillerPe support</b><span>Help with the app or an outlet</span></div><svg class="i chev"><use href="#right"/></svg></a>
+        <a href="#login" class="li"><div class="ictile ic-red"><svg class="i"><use href="#logout"/></svg></div><div class="grow"><b style="color:var(--brand)">Log out</b><span>Owner App 1.0.0</span></div></a>
+      </div></div>
+    </div>
+    <nav class="nav">
+      <a href="#home" class="nb on"><span class="pill"><svg class="i"><use href="#home"/></svg></span>Home</a>
+      <a href="#bills" class="nb"><span class="pill"><svg class="i"><use href="#bill"/></svg></span>Bills</a>
+      <a href="#reports" class="nb"><span class="pill"><svg class="i"><use href="#chart"/></svg></span>Reports</a>
+      <a href="#manage" class="nb"><span class="pill"><svg class="i"><use href="#sliders"/></svg></span>Manage</a>
+      <a href="#alerts" class="nb"><span class="pill"><svg class="i"><use href="#bell"/></svg><span class="badge">4</span></span>Alerts</a>
+    </nav></div>
+    <figcaption><b>Profile, language, alert rules</b><span>English, Hindi or Gujarati per phone. The owner turns each alert on or off and sets its limit. Fingerprint lock and support are here too.</span></figcaption>
+  </figure>
+
+  </div>
+</section>
+
+<p class="foot">All names and numbers on these screens are sample data. The real app shows each owner's own outlets, synced from their outlet PCs. Full feature list and rollout plan: ROADMAP.md in this folder.</p>
+</body>
+</html>

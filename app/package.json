@@ -1,0 +1,44 @@
+{
+  "name": "billerpe-owner-app",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "tsc --noEmit && vite build",
+    "typecheck": "tsc --noEmit",
+    "android:sync": "vite build && npx cap sync android",
+    "android:apk": "vite build && npx cap sync android && cd android && gradlew.bat assembleDebug"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.5.2",
+    "@capacitor/app": "^8.1.1",
+    "@capacitor/core": "^8.5.2",
+    "@capacitor/device": "^8.0.0",
+    "@capacitor/network": "^8.0.1",
+    "@capacitor/preferences": "^8.0.0",
+    "@capacitor/push-notifications": "^8.1.2",
+    "@capacitor/status-bar": "^8.0.3",
+    "@fontsource/archivo": "^5.3.0",
+    "@fontsource/manrope": "^5.3.0",
+    "@tailwindcss/vite": "^4.2.1",
+    "@tanstack/react-router": "^1.170.39",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.575.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "tailwind-merge": "^3.5.0",
+    "tailwindcss": "^4.2.1"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.5.2",
+    "@tanstack/router-plugin": "^1.168.23",
+    "@types/node": "^22.16.5",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.2.0",
+    "typescript": "^5.8.3",
+    "vite": "^7.1.0",
+    "vite-tsconfig-paths": "^6.0.2"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "798258576921",
+    "project_id": "billerpeowner",
+    "storage_bucket": "billerpeowner.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:798258576921:android:df4af98f3bfaff95713488",
+        "android_client_info": {
+          "package_name": "com.billerpe.owner"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjJQYxd6Eza1SSmNibjBvpuw4co2614AA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

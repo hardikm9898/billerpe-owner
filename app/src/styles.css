@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+/* BillerPe Owner - tokens from design/styles.css (design v1, 2026-10-05).
+   BillerPe crimson, Archivo for display and numbers, Manrope for text,
+   warm off-white ground, a dark "ink" for hero cards. */
+@theme {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Archivo", ui-sans-serif, system-ui, sans-serif;
+
+  --color-ground: #f5f1ec;
+  --color-surface: #ffffff;
+  --color-ink: #1e1714;
+  --color-ink-2: #5e5550;
+  --color-ink-3: #74695f;
+  --color-line: #ece5de;
+  --color-line-2: #e3dad2;
+  --color-brand: #ae0a1e;
+  --color-brand-dark: #850716;
+  --color-brand-soft: #fbe7e8;
+  --color-dark: #201815;
+  --color-dark-line: #3a2e29;
+  --color-on-dark: #fbf5f1;
+  --color-on-dark-2: #cdbfb7;
+  --color-ok: #13703a;
+  --color-ok-soft: #e3f3e8;
+  --color-warn: #9a4a06;
+  --color-warn-soft: #fcefd9;
+  --color-info: #1e4fb8;
+  --color-info-soft: #e6eefb;
+  --color-muted-soft: #efe9e3;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background: var(--color-ground);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+}
+button {
+  cursor: pointer;
+}
+.num {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+/* Space for the Android gesture bar under the bottom navigation. */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+@keyframes owner-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+.skeleton {
+  background: var(--color-muted-soft);
+  border-radius: 12px;
+  animation: owner-pulse 1.4s ease-in-out infinite;
+}
