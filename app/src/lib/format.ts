@@ -59,3 +59,24 @@ export const initials = (name: string) =>
     .slice(0, 2)
     .map((w) => w[0]!.toUpperCase())
     .join("") || "O";
+
+/** "₹46.3k", "₹1.2L" for tight tiles; small amounts in full. */
+export function moneyShort(n: number) {
+  const a = Math.abs(n);
+  if (a >= 1e7) return `₹${(n / 1e7).toFixed(1).replace(/\.0$/, "")}Cr`;
+  if (a >= 1e5) return `₹${(n / 1e5).toFixed(1).replace(/\.0$/, "")}L`;
+  if (a >= 1e4) return `₹${(n / 1e3).toFixed(1).replace(/\.0$/, "")}k`;
+  return money(n);
+}
+
+/** 0-23 -> "11 AM", "12 PM", "9 PM". */
+export const hourLabel = (h: number) => `${h % 12 === 0 ? 12 : h % 12} ${h < 12 ? "AM" : "PM"}`;
+
+/** "▲ 12%" / "▼ 8%" against the earlier figure, or null when there is nothing to compare. */
+export function delta(now: number, before: number): { up: boolean; text: string } | null {
+  if (!(before > 0)) return null;
+  const pct = Math.round(((now - before) / before) * 100);
+  return { up: pct >= 0, text: `${pct >= 0 ? "▲" : "▼"} ${Math.abs(pct)}%` };
+}
+
+export const qty = (n: number) => (Number.isInteger(n) ? String(n) : n.toFixed(2).replace(/0+$/, "").replace(/\.$/, ""));

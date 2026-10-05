@@ -244,3 +244,20 @@ management most. Phases 1–2 are read-only, so they are safe to give to owners 
   "Update BillerPe on this PC to see this".
 
 **Server steps (in addition to phase 0):** `npm run migrate` also runs 20261005110000.
+
+### Phase 1 · Watch — built 5 Oct 2026 (app 0.2.0)
+Screens built to match the design: Home (all outlets), Outlet live (today / yesterday / 7 days /
+custom), Running tables, Bills (filters, search, outlet + date pickers), Bill detail with activity
+and "Share bill PDF", Outlet PC health (now at its own screen behind the monitor button).
+Owner decision 2026-10-05: guests are not recorded anywhere, so "Guests" reads **Items** and table
+tiles leave the guest number off.
+
+- **Cloud** `uat-backend-v2` 0df1ce1: `home`, `outlet`, `tables`, `bills`, `bill` in `ownerv1/watch.js`;
+  the order upload also stores each bill's activity in the existing timeline table (no migration).
+  84 owner tests; POS App 234 pass.
+- **Exe** `billerpe-local-exe` 5325761: each uploaded bill carries its activity, KOT times, who sent
+  each KOT and its staff member. Older PCs: bills still show, without KOT times or activity.
+- **App** 0.2.0: `builds/BillerPe-Owner-0.2.0-debug.apk`. Browser walkthrough 43 checks.
+
+Still to come in this phase's screens: "Offline in the last 7 days" on the PC screen (comes with the
+phase 4 offline watcher), the Alerts badge (phase 4).

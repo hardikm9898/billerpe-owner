@@ -20,8 +20,8 @@ export function Screen({ children, nav = true, className }: { children: ReactNod
 }
 
 const TABS: { to: string; label: string; icon: LucideIcon; match: (p: string) => boolean }[] = [
-  { to: "/", label: "Home", icon: Home, match: (p) => p === "/" || p.startsWith("/outlet") || p === "/profile" },
-  { to: "/bills", label: "Bills", icon: ReceiptText, match: (p) => p.startsWith("/bills") },
+  { to: "/", label: "Home", icon: Home, match: (p) => p === "/" || p.startsWith("/outlet") || p.startsWith("/tables") || p === "/profile" },
+  { to: "/bills", label: "Bills", icon: ReceiptText, match: (p) => p.startsWith("/bills") || p.startsWith("/bill/") },
   { to: "/reports", label: "Reports", icon: BarChart3, match: (p) => p.startsWith("/reports") },
   { to: "/manage", label: "Manage", icon: SlidersHorizontal, match: (p) => p.startsWith("/manage") },
   { to: "/alerts", label: "Alerts", icon: Bell, match: (p) => p.startsWith("/alerts") },

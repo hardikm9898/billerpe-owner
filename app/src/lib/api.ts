@@ -126,3 +126,144 @@ export const login = (mobile: string, password: string, device: DeviceInfo) =>
   sessionCall("/login", { mobile, password, device });
 
 export const resume = (t: string, device: DeviceInfo) => sessionCall("/resume", { token: t, device });
+
+/* ------------------------------ phase 1 · watch ------------------------------ */
+
+export type RangeKey = "today" | "yesterday" | "7d" | "30d" | "custom";
+export interface Range {
+  key: RangeKey;
+  from?: string;
+  to?: string;
+}
+export interface HourBucket {
+  hour: number;
+  amount: number;
+}
+export interface Attention {
+  kind: "cancel-after-kot" | "cancel" | "edited" | "discount";
+  outletId: number;
+  billId: string;
+  billNo: string;
+  amount: number;
+  pct?: number;
+  by: string;
+  at: string;
+  reason?: string;
+}
+export interface HomeOutlet {
+  id: number;
+  net: number;
+  compareNet: number;
+  compareLabel: string;
+  bills: number;
+  items: number;
+  runningTables: number;
+  totalTables: number;
+  openAmount: number;
+  cancelled: number;
+  hourly: HourBucket[];
+  nowIndex: number;
+  dayStart: string;
+}
+export interface HomeResult {
+  serverTime: string;
+  outlets: HomeOutlet[];
+  attention: Attention | null;
+}
+export interface OutletResult {
+  serverTime: string;
+  id: number;
+  name: string;
+  range: { key: RangeKey; from: string; to: string; days: number; isToday: boolean };
+  net: number;
+  compareNet: number;
+  compareLabel: string;
+  bills: number;
+  avgBill: number;
+  items: number;
+  discount: number;
+  tax: number;
+  expenses: number;
+  cancelled: number;
+  hourly: HourBucket[] | null;
+  nowIndex: number | null;
+  daily: { day: string; amount: number }[] | null;
+  runningTables: number;
+  totalTables: number;
+  openAmount: number;
+  cash: { expected: number; openedAt: string | null; by: string } | null;
+  payments: { name: string; amount: number }[];
+  topItems: { name: string; qty: number; amount: number }[];
+}
+export type TableState = "free" | "running" | "billed";
+export interface TableTile {
+  id: string;
+  name: string;
+  state: TableState;
+  billId?: string;
+  billNo?: string;
+  amount?: number;
+  minutes?: number;
+  overdue?: boolean;
+  captain?: string;
+}
+export interface TablesResult {
+  serverTime: string;
+  sections: { id: string; name: string; tables: TableTile[] }[];
+  running: number;
+  total: number;
+  pickup: { billId: string; billNo: string; amount: number; createdAt: string }[];
+}
+export type Tone = "ok" | "warn" | "brand" | "info" | "muted";
+export type BillFilter = "all" | "running" | "settled" | "cancelled" | "edited" | "due" | "discount";
+export interface BillRow {
+  id: string;
+  outletId: number;
+  outletName: string;
+  billNo: string;
+  place: string;
+  status: "running" | "hold" | "billed" | "settled" | "cancelled";
+  amount: number;
+  at: string;
+  sub: string;
+  tag: { tone: Tone; text: string };
+}
+export interface BillsResult {
+  serverTime: string;
+  counts: Record<BillFilter, number>;
+  more: boolean;
+  bills: BillRow[];
+}
+export interface BillDetail {
+  serverTime: string;
+  id: string;
+  outletId: number;
+  outletName: string;
+  billNo: string;
+  status: BillRow["status"];
+  tag: { tone: Tone; text: string };
+  type: "dinin" | "pickup";
+  table: string | null;
+  section: string | null;
+  createdAt: string;
+  businessDate: string;
+  captain: string;
+  cashier: string;
+  customer: { name: string; mobile: string } | null;
+  kots: { no: number; at: string; by: string; lines: { name: string; variant: string; addons: string; note: string; qty: number; amount: number }[] }[];
+  held: { name: string; qty: number; amount: number }[];
+  totals: {
+    subtotal: number;
+    discount: number;
+    discountReason: string;
+    service: number;
+    packaging: number;
+    taxLines: { name: string; amount: number }[];
+    roundOff: number;
+    grand: number;
+  };
+  payments: { name: string; amount: number }[];
+  dueOutstanding: number;
+  cancelReason: string;
+  activity: { at: string; action: string; label: string; by: string; role: string }[];
+}

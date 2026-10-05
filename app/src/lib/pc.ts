@@ -12,8 +12,9 @@ export interface PcLine {
 
 export function pcLine(pc: PcState, now: number): PcLine {
   if (pc.status === "online") {
-    const waiting = pc.pendingOrders ? ` · ${bills(pc.pendingOrders)} uploading` : "";
-    return { tone: "ok", label: `Online · last heard ${ago(pc.lastSeenAt, now)}${waiting}`, short: "Online" };
+    // Bills still going up matter more than the heartbeat age.
+    if (pc.pendingOrders) return { tone: "ok", label: `Online · ${bills(pc.pendingOrders)} uploading`, short: "Online" };
+    return { tone: "ok", label: `Online · last heard ${ago(pc.lastSeenAt, now)}`, short: "Online" };
   }
   if (pc.status === "offline") {
     if (!pc.lastSeenAt) return { tone: "warn", label: "Offline · never connected", short: "Offline" };
