@@ -298,3 +298,103 @@ export interface ReportResult {
   visual: { money: boolean; items: { label: string; outlet?: string; sub: string; value: number; unit: string; min?: number; low?: boolean }[]; more: number } | null;
   note: string | null;
 }
+
+/* ------------------------------ phase 3 · manage ------------------------------ */
+
+export interface ManageHub {
+  serverTime: string;
+  items: number;
+  itemsOff: number;
+  staff: number;
+  staffOff: number;
+  tables: number;
+  sections: number;
+  lowStock: number | null;
+  stockItems: number;
+  taxSummary: string;
+  serviceCharge: string | null;
+  paymentModes: string[];
+  promos: number;
+  expenseHeads: number;
+  pending: number;
+  pendingSince: string | null;
+}
+export type Dietary = "veg" | "jain" | "nonveg" | "vegan" | "swaminarayan" | "egg";
+export interface MenuItemM {
+  id: string;
+  menuId: string;
+  categoryId: string;
+  name: string;
+  shortCode: string;
+  price: number;
+  dietary: Dietary;
+  gstType: "G" | "S";
+  description: string;
+  favorite: boolean;
+  active: boolean;
+  outOfStock: boolean;
+  variants: { variantId: string; name: string; price: number }[];
+  addonGroupIds: string[];
+  syncing: boolean;
+  hasRecipe: boolean;
+}
+export interface ManageMenu {
+  serverTime: string;
+  menus: { id: string; name: string; isDefault: boolean; active: boolean }[];
+  categories: { id: string; menuId: string; name: string; rank: number; active: boolean; syncing: boolean }[];
+  variants: { id: string; menuId: string; name: string }[];
+  addonGroups: { id: string; menuId: string; name: string; active: boolean }[];
+  items: MenuItemM[];
+}
+export type Grant = { view: boolean; create: boolean; edit: boolean; delete: boolean };
+export interface Perms {
+  modules: Record<string, Grant>;
+  special: Record<string, boolean>;
+}
+export interface StaffM {
+  id: string;
+  name: string;
+  mobile: string;
+  role: string;
+  active: boolean;
+  isOwner: boolean;
+  overrides?: Perms;
+  syncing: boolean;
+}
+export interface ManageStaff {
+  serverTime: string;
+  staff: StaffM[];
+  roleDefaults: Record<string, Perms>;
+}
+export interface ManageTables {
+  serverTime: string;
+  sections: { id: string; name: string; rank: number; syncing: boolean; tables: { id: string; name: string; seats: number; running: boolean; syncing: boolean }[] }[];
+}
+export interface ChargeRule {
+  active: boolean;
+  type: "percentage" | "fixed";
+  value: number;
+  calculationOn: "core" | "total";
+  orderTypes: string[];
+  taxOnCharge: boolean;
+  condition: string;
+  threshold: number;
+}
+export interface ManageSettings {
+  serverTime: string;
+  taxes: { id: string; name: string; type: "pr" | "fix"; rate: number; active: boolean; orderTypes: string[]; sectionIds: string[]; itemIds: string[]; syncing: boolean }[];
+  serviceCharge: ChargeRule;
+  packagingCharge: ChargeRule;
+  paymentModes: { id: string; name: string; locked: boolean; active: boolean; custom: boolean }[];
+  promoCodes: { id: string; name: string; code: string; type: "pr" | "fix"; value: number; active: boolean; syncing: boolean }[];
+  expenseHeads: { id: string; name: string; system: boolean; syncing: boolean }[];
+}
+export interface ManageStock {
+  serverTime: string;
+  stockUploaded: boolean;
+  units: { id: string; name: string; short: string }[];
+  raw: { id: string; name: string; unitId: string; purchaseUnitId: string; conversion: number; reorderLevel: number; stock: number | null; low: boolean | null; syncing: boolean }[];
+  suppliers: { id: string; name: string; outstanding: number; syncing: boolean }[];
+  semi: { id: string; name: string }[];
+  recipes: { itemId: string; itemName: string; base: { kind: "raw" | "semi"; refId: string; qty: number }[]; variants: number; addons: number }[];
+}

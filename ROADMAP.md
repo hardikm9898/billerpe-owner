@@ -276,3 +276,24 @@ journal). Older PCs: the stock report says "BillerPe 1.1.7 or newer needed".
   `owner_stock_levels` / `owner_stock_days` (**migration 20261005130000**). 112 owner tests; POS App 234.
 - **Exe** `billerpe-local-exe` 7b974c9: `services/sync/pushStock.js` in the push cycle.
 - **App** 0.3.0: `builds/BillerPe-Owner-0.3.0-debug.apk`. Reports walkthrough 28 checks; Phase 1's 43 still pass.
+
+### Phase 3 · Manage — built 5 Oct 2026 (app 0.4.0)
+Manage hub (outlet picker, "changes reach the PC" / "N changes waiting" banner, tiles, settings list),
+Menu (search, categories, on/off switch, item editor with variant prices, delete, categories sheet),
+Staff & access (list by role, add/edit, reset PIN/password, switch off, permission grid vs role
+defaults), Tables & sections (add/rename sections, bulk add tables, rename/seats/move, switch off),
+Settings (tax & service/packaging charges, payment modes, promo codes, expense heads), Stock (low list,
+raw materials and suppliers editable, recipes view-only, links to stock reports).
+
+Owner decisions: recipes view-only for now (sync never carries deletions; a recipe edit would
+double-deduct on the PC) — delete sync is a separate later step. Nothing is ever deleted from the
+app: things are switched off (items are flagged deleted and switched off).
+
+**Sync bug found and fixed (cloud only):** a cloud change made in the same second as the outlet PC's
+own sync was never pulled. Proven with a real cloud + real exe (fails 3/3 before, passes 3/3 after).
+
+- **Cloud** `uat-backend-v2` 47ddc2c (sync fix) + 5441938 (`ownerv1/manage.js`, `owner_changes`,
+  **migration 20261005140000**). 124 owner tests; POS App 234; sync guard checks pass.
+- **Exe:** no change needed for this phase.
+- **App** 0.4.0: `builds/BillerPe-Owner-0.4.0-debug.apk`. Manage walkthrough 35 checks; Reports 28 and
+  Watch 43 still pass. End-to-end test with a real PC: 36 checks × 3 runs.

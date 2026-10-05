@@ -20,6 +20,12 @@ import { Route as PcOutletIdRouteImport } from "./routes/pc.$outletId"
 import { Route as ReportReportIdRouteImport } from "./routes/report.$reportId"
 import { Route as TablesOutletIdRouteImport } from "./routes/tables.$outletId"
 import { Route as BillOutletIdBillIdRouteImport } from "./routes/bill.$outletId.$billId"
+import { Route as ManageMenuOutletIdRouteImport } from "./routes/manage_.menu.$outletId"
+import { Route as ManageStaffOutletIdRouteImport } from "./routes/manage_.staff.$outletId"
+import { Route as ManageStockOutletIdRouteImport } from "./routes/manage_.stock.$outletId"
+import { Route as ManageTablesOutletIdRouteImport } from "./routes/manage_.tables.$outletId"
+import { Route as ManageSettingsOutletIdSectionRouteImport } from "./routes/manage_.settings.$outletId.$section"
+import { Route as ManageStaffOutletIdStaffIdRouteImport } from "./routes/manage_.staff.$outletId_.$staffId"
 
 const IndexRoute = IndexRouteImport.update({
   id: "/",
@@ -76,6 +82,38 @@ const BillOutletIdBillIdRoute = BillOutletIdBillIdRouteImport.update({
   path: "/bill/$outletId/$billId",
   getParentRoute: () => rootRouteImport,
 } as any)
+const ManageMenuOutletIdRoute = ManageMenuOutletIdRouteImport.update({
+  id: "/manage_/menu/$outletId",
+  path: "/manage/menu/$outletId",
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ManageStaffOutletIdRoute = ManageStaffOutletIdRouteImport.update({
+  id: "/manage_/staff/$outletId",
+  path: "/manage/staff/$outletId",
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ManageStockOutletIdRoute = ManageStockOutletIdRouteImport.update({
+  id: "/manage_/stock/$outletId",
+  path: "/manage/stock/$outletId",
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ManageTablesOutletIdRoute = ManageTablesOutletIdRouteImport.update({
+  id: "/manage_/tables/$outletId",
+  path: "/manage/tables/$outletId",
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ManageSettingsOutletIdSectionRoute =
+  ManageSettingsOutletIdSectionRouteImport.update({
+    id: "/manage_/settings/$outletId/$section",
+    path: "/manage/settings/$outletId/$section",
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ManageStaffOutletIdStaffIdRoute =
+  ManageStaffOutletIdStaffIdRouteImport.update({
+    id: "/manage_/staff/$outletId_/$staffId",
+    path: "/manage/staff/$outletId/$staffId",
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   "/": typeof IndexRoute
@@ -89,6 +127,12 @@ export interface FileRoutesByFullPath {
   "/report/$reportId": typeof ReportReportIdRoute
   "/tables/$outletId": typeof TablesOutletIdRoute
   "/bill/$outletId/$billId": typeof BillOutletIdBillIdRoute
+  "/manage/menu/$outletId": typeof ManageMenuOutletIdRoute
+  "/manage/staff/$outletId": typeof ManageStaffOutletIdRoute
+  "/manage/stock/$outletId": typeof ManageStockOutletIdRoute
+  "/manage/tables/$outletId": typeof ManageTablesOutletIdRoute
+  "/manage/settings/$outletId/$section": typeof ManageSettingsOutletIdSectionRoute
+  "/manage/staff/$outletId/$staffId": typeof ManageStaffOutletIdStaffIdRoute
 }
 export interface FileRoutesByTo {
   "/": typeof IndexRoute
@@ -102,6 +146,12 @@ export interface FileRoutesByTo {
   "/report/$reportId": typeof ReportReportIdRoute
   "/tables/$outletId": typeof TablesOutletIdRoute
   "/bill/$outletId/$billId": typeof BillOutletIdBillIdRoute
+  "/manage/menu/$outletId": typeof ManageMenuOutletIdRoute
+  "/manage/staff/$outletId": typeof ManageStaffOutletIdRoute
+  "/manage/stock/$outletId": typeof ManageStockOutletIdRoute
+  "/manage/tables/$outletId": typeof ManageTablesOutletIdRoute
+  "/manage/settings/$outletId/$section": typeof ManageSettingsOutletIdSectionRoute
+  "/manage/staff/$outletId/$staffId": typeof ManageStaffOutletIdStaffIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -116,6 +166,12 @@ export interface FileRoutesById {
   "/report/$reportId": typeof ReportReportIdRoute
   "/tables/$outletId": typeof TablesOutletIdRoute
   "/bill/$outletId/$billId": typeof BillOutletIdBillIdRoute
+  "/manage_/menu/$outletId": typeof ManageMenuOutletIdRoute
+  "/manage_/staff/$outletId": typeof ManageStaffOutletIdRoute
+  "/manage_/stock/$outletId": typeof ManageStockOutletIdRoute
+  "/manage_/tables/$outletId": typeof ManageTablesOutletIdRoute
+  "/manage_/settings/$outletId/$section": typeof ManageSettingsOutletIdSectionRoute
+  "/manage_/staff/$outletId_/$staffId": typeof ManageStaffOutletIdStaffIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -131,6 +187,12 @@ export interface FileRouteTypes {
     | "/report/$reportId"
     | "/tables/$outletId"
     | "/bill/$outletId/$billId"
+    | "/manage/menu/$outletId"
+    | "/manage/staff/$outletId"
+    | "/manage/stock/$outletId"
+    | "/manage/tables/$outletId"
+    | "/manage/settings/$outletId/$section"
+    | "/manage/staff/$outletId/$staffId"
   fileRoutesByTo: FileRoutesByTo
   to:
     | "/"
@@ -144,6 +206,12 @@ export interface FileRouteTypes {
     | "/report/$reportId"
     | "/tables/$outletId"
     | "/bill/$outletId/$billId"
+    | "/manage/menu/$outletId"
+    | "/manage/staff/$outletId"
+    | "/manage/stock/$outletId"
+    | "/manage/tables/$outletId"
+    | "/manage/settings/$outletId/$section"
+    | "/manage/staff/$outletId/$staffId"
   id:
     | "__root__"
     | "/"
@@ -157,6 +225,12 @@ export interface FileRouteTypes {
     | "/report/$reportId"
     | "/tables/$outletId"
     | "/bill/$outletId/$billId"
+    | "/manage_/menu/$outletId"
+    | "/manage_/staff/$outletId"
+    | "/manage_/stock/$outletId"
+    | "/manage_/tables/$outletId"
+    | "/manage_/settings/$outletId/$section"
+    | "/manage_/staff/$outletId_/$staffId"
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -171,6 +245,12 @@ export interface RootRouteChildren {
   ReportReportIdRoute: typeof ReportReportIdRoute
   TablesOutletIdRoute: typeof TablesOutletIdRoute
   BillOutletIdBillIdRoute: typeof BillOutletIdBillIdRoute
+  ManageMenuOutletIdRoute: typeof ManageMenuOutletIdRoute
+  ManageStaffOutletIdRoute: typeof ManageStaffOutletIdRoute
+  ManageStockOutletIdRoute: typeof ManageStockOutletIdRoute
+  ManageTablesOutletIdRoute: typeof ManageTablesOutletIdRoute
+  ManageSettingsOutletIdSectionRoute: typeof ManageSettingsOutletIdSectionRoute
+  ManageStaffOutletIdStaffIdRoute: typeof ManageStaffOutletIdStaffIdRoute
 }
 
 declare module "@tanstack/react-router" {
@@ -252,6 +332,48 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof BillOutletIdBillIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    "/manage_/menu/$outletId": {
+      id: "/manage_/menu/$outletId"
+      path: "/manage/menu/$outletId"
+      fullPath: "/manage/menu/$outletId"
+      preLoaderRoute: typeof ManageMenuOutletIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    "/manage_/staff/$outletId": {
+      id: "/manage_/staff/$outletId"
+      path: "/manage/staff/$outletId"
+      fullPath: "/manage/staff/$outletId"
+      preLoaderRoute: typeof ManageStaffOutletIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    "/manage_/stock/$outletId": {
+      id: "/manage_/stock/$outletId"
+      path: "/manage/stock/$outletId"
+      fullPath: "/manage/stock/$outletId"
+      preLoaderRoute: typeof ManageStockOutletIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    "/manage_/tables/$outletId": {
+      id: "/manage_/tables/$outletId"
+      path: "/manage/tables/$outletId"
+      fullPath: "/manage/tables/$outletId"
+      preLoaderRoute: typeof ManageTablesOutletIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    "/manage_/settings/$outletId/$section": {
+      id: "/manage_/settings/$outletId/$section"
+      path: "/manage/settings/$outletId/$section"
+      fullPath: "/manage/settings/$outletId/$section"
+      preLoaderRoute: typeof ManageSettingsOutletIdSectionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    "/manage_/staff/$outletId_/$staffId": {
+      id: "/manage_/staff/$outletId_/$staffId"
+      path: "/manage/staff/$outletId/$staffId"
+      fullPath: "/manage/staff/$outletId/$staffId"
+      preLoaderRoute: typeof ManageStaffOutletIdStaffIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -267,6 +389,12 @@ const rootRouteChildren: RootRouteChildren = {
   ReportReportIdRoute: ReportReportIdRoute,
   TablesOutletIdRoute: TablesOutletIdRoute,
   BillOutletIdBillIdRoute: BillOutletIdBillIdRoute,
+  ManageMenuOutletIdRoute: ManageMenuOutletIdRoute,
+  ManageStaffOutletIdRoute: ManageStaffOutletIdRoute,
+  ManageStockOutletIdRoute: ManageStockOutletIdRoute,
+  ManageTablesOutletIdRoute: ManageTablesOutletIdRoute,
+  ManageSettingsOutletIdSectionRoute: ManageSettingsOutletIdSectionRoute,
+  ManageStaffOutletIdStaffIdRoute: ManageStaffOutletIdStaffIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
