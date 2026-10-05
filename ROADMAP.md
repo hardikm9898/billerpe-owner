@@ -261,3 +261,18 @@ tiles leave the guest number off.
 
 Still to come in this phase's screens: "Offline in the last 7 days" on the PC screen (comes with the
 phase 4 offline watcher), the Alerts badge (phase 4).
+
+### Phase 2 · Reports — built 5 Oct 2026 (app 0.3.0)
+Reports tab and report screen to the design: outlet picker (one / all), date chips (Today, Yesterday,
+Last 7 days, This month, Last month, Custom up to 3 months), 14 reports in Sales / Control & finance /
+Stock, views inside a report (By item / By category / By outlet, Cancelled / Edited, Due now / Received,
+In hand / Ledger, Purchases / Wastage), summary tiles, bar list, and **PDF / Excel / Share** above the tabs.
+Excel files are real .xlsx (numbers stay numbers); every report view checked with openpyxl.
+
+Stock (owner approved): the outlet PC now uploads stock levels and daily ledger totals (not the raw
+journal). Older PCs: the stock report says "BillerPe 1.1.7 or newer needed".
+
+- **Cloud** `uat-backend-v2` 60aab81: `ownerv1/reports.js`, `/sync/push/stock`, new tables
+  `owner_stock_levels` / `owner_stock_days` (**migration 20261005130000**). 112 owner tests; POS App 234.
+- **Exe** `billerpe-local-exe` 7b974c9: `services/sync/pushStock.js` in the push cycle.
+- **App** 0.3.0: `builds/BillerPe-Owner-0.3.0-debug.apk`. Reports walkthrough 28 checks; Phase 1's 43 still pass.

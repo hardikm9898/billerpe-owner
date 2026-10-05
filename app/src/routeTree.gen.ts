@@ -17,6 +17,7 @@ import { Route as ProfileRouteImport } from "./routes/profile"
 import { Route as ReportsRouteImport } from "./routes/reports"
 import { Route as OutletOutletIdRouteImport } from "./routes/outlet.$outletId"
 import { Route as PcOutletIdRouteImport } from "./routes/pc.$outletId"
+import { Route as ReportReportIdRouteImport } from "./routes/report.$reportId"
 import { Route as TablesOutletIdRouteImport } from "./routes/tables.$outletId"
 import { Route as BillOutletIdBillIdRouteImport } from "./routes/bill.$outletId.$billId"
 
@@ -60,6 +61,11 @@ const PcOutletIdRoute = PcOutletIdRouteImport.update({
   path: "/pc/$outletId",
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReportReportIdRoute = ReportReportIdRouteImport.update({
+  id: "/report/$reportId",
+  path: "/report/$reportId",
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TablesOutletIdRoute = TablesOutletIdRouteImport.update({
   id: "/tables/$outletId",
   path: "/tables/$outletId",
@@ -80,6 +86,7 @@ export interface FileRoutesByFullPath {
   "/reports": typeof ReportsRoute
   "/outlet/$outletId": typeof OutletOutletIdRoute
   "/pc/$outletId": typeof PcOutletIdRoute
+  "/report/$reportId": typeof ReportReportIdRoute
   "/tables/$outletId": typeof TablesOutletIdRoute
   "/bill/$outletId/$billId": typeof BillOutletIdBillIdRoute
 }
@@ -92,6 +99,7 @@ export interface FileRoutesByTo {
   "/reports": typeof ReportsRoute
   "/outlet/$outletId": typeof OutletOutletIdRoute
   "/pc/$outletId": typeof PcOutletIdRoute
+  "/report/$reportId": typeof ReportReportIdRoute
   "/tables/$outletId": typeof TablesOutletIdRoute
   "/bill/$outletId/$billId": typeof BillOutletIdBillIdRoute
 }
@@ -105,6 +113,7 @@ export interface FileRoutesById {
   "/reports": typeof ReportsRoute
   "/outlet/$outletId": typeof OutletOutletIdRoute
   "/pc/$outletId": typeof PcOutletIdRoute
+  "/report/$reportId": typeof ReportReportIdRoute
   "/tables/$outletId": typeof TablesOutletIdRoute
   "/bill/$outletId/$billId": typeof BillOutletIdBillIdRoute
 }
@@ -119,6 +128,7 @@ export interface FileRouteTypes {
     | "/reports"
     | "/outlet/$outletId"
     | "/pc/$outletId"
+    | "/report/$reportId"
     | "/tables/$outletId"
     | "/bill/$outletId/$billId"
   fileRoutesByTo: FileRoutesByTo
@@ -131,6 +141,7 @@ export interface FileRouteTypes {
     | "/reports"
     | "/outlet/$outletId"
     | "/pc/$outletId"
+    | "/report/$reportId"
     | "/tables/$outletId"
     | "/bill/$outletId/$billId"
   id:
@@ -143,6 +154,7 @@ export interface FileRouteTypes {
     | "/reports"
     | "/outlet/$outletId"
     | "/pc/$outletId"
+    | "/report/$reportId"
     | "/tables/$outletId"
     | "/bill/$outletId/$billId"
   fileRoutesById: FileRoutesById
@@ -156,6 +168,7 @@ export interface RootRouteChildren {
   ReportsRoute: typeof ReportsRoute
   OutletOutletIdRoute: typeof OutletOutletIdRoute
   PcOutletIdRoute: typeof PcOutletIdRoute
+  ReportReportIdRoute: typeof ReportReportIdRoute
   TablesOutletIdRoute: typeof TablesOutletIdRoute
   BillOutletIdBillIdRoute: typeof BillOutletIdBillIdRoute
 }
@@ -218,6 +231,13 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof PcOutletIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    "/report/$reportId": {
+      id: "/report/$reportId"
+      path: "/report/$reportId"
+      fullPath: "/report/$reportId"
+      preLoaderRoute: typeof ReportReportIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     "/tables/$outletId": {
       id: "/tables/$outletId"
       path: "/tables/$outletId"
@@ -244,6 +264,7 @@ const rootRouteChildren: RootRouteChildren = {
   ReportsRoute: ReportsRoute,
   OutletOutletIdRoute: OutletOutletIdRoute,
   PcOutletIdRoute: PcOutletIdRoute,
+  ReportReportIdRoute: ReportReportIdRoute,
   TablesOutletIdRoute: TablesOutletIdRoute,
   BillOutletIdBillIdRoute: BillOutletIdBillIdRoute,
 }

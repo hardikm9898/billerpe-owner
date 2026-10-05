@@ -9,11 +9,12 @@ import type { ReactNode } from "react";
 // twMerge: a screen's own class (bg-dark) beats the component default (bg-surface).
 export const cn = (...a: Parameters<typeof clsx>) => twMerge(clsx(...a));
 
-/** A scrolling screen. With `nav`, room is left for the bottom navigation. */
-export function Screen({ children, nav = true, className }: { children: ReactNode; nav?: boolean; className?: string }) {
+/** A scrolling screen. With `nav`, the bottom navigation; `footer` sits fixed between the content and it. */
+export function Screen({ children, nav = true, className, footer }: { children: ReactNode; nav?: boolean; className?: string; footer?: ReactNode }) {
   return (
     <div className="flex h-full flex-col">
       <main className={cn("no-scrollbar flex-1 overflow-y-auto", nav ? "pb-6" : "pb-8", className)}>{children}</main>
+      {footer}
       {nav && <BottomNav />}
     </div>
   );
@@ -22,7 +23,7 @@ export function Screen({ children, nav = true, className }: { children: ReactNod
 const TABS: { to: string; label: string; icon: LucideIcon; match: (p: string) => boolean }[] = [
   { to: "/", label: "Home", icon: Home, match: (p) => p === "/" || p.startsWith("/outlet") || p.startsWith("/tables") || p === "/profile" },
   { to: "/bills", label: "Bills", icon: ReceiptText, match: (p) => p.startsWith("/bills") || p.startsWith("/bill/") },
-  { to: "/reports", label: "Reports", icon: BarChart3, match: (p) => p.startsWith("/reports") },
+  { to: "/reports", label: "Reports", icon: BarChart3, match: (p) => p.startsWith("/reports") || p.startsWith("/report/") },
   { to: "/manage", label: "Manage", icon: SlidersHorizontal, match: (p) => p.startsWith("/manage") },
   { to: "/alerts", label: "Alerts", icon: Bell, match: (p) => p.startsWith("/alerts") },
 ];

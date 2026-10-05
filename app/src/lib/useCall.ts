@@ -15,7 +15,7 @@ export interface CallState<T> {
   refresh(): Promise<void>;
 }
 
-export function useCall<T extends { serverTime?: string }>(name: string, args: unknown[] = [], pollMs = 60000): CallState<T> {
+export function useCall<T extends object>(name: string, args: unknown[] = [], pollMs = 60000): CallState<T> {
   const [data, setData] = useState<T | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -32,9 +32,10 @@ export function useCall<T extends { serverTime?: string }>(name: string, args: u
       const sentAt = Date.now();
       const r = await call<T>(name, ...args);
       if (keyRef.current !== asked) return;
-      if (r && typeof r === "object" && r.serverTime) {
+      const serverTime = (r as { serverTime?: string } | null)?.serverTime;
+      if (serverTime) {
         const mid = (sentAt + Date.now()) / 2;
-        setSkew(new Date(r.serverTime).getTime() - mid);
+        setSkew(new Date(serverTime).getTime() - mid);
       }
       setData(r);
       setError(null);

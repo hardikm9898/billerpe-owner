@@ -79,4 +79,5 @@ export function delta(now: number, before: number): { up: boolean; text: string 
   return { up: pct >= 0, text: `${pct >= 0 ? "▲" : "▼"} ${Math.abs(pct)}%` };
 }
 
-export const qty = (n: number) => (Number.isInteger(n) ? String(n) : n.toFixed(2).replace(/0+$/, "").replace(/\.$/, ""));
+/** 1800 -> "1,800", 2.5 -> "2.5" (Indian grouping, up to 2 decimals). */
+export const qty = (n: number) => n.toLocaleString("en-IN", { maximumFractionDigits: 2 });

@@ -1,7 +1,7 @@
 {
   "name": "billerpe-owner-app",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.3.0",
   "type": "module",
   "scripts": {
     "dev": "vite --host",
@@ -26,6 +26,7 @@
     "@tailwindcss/vite": "^4.2.1",
     "@tanstack/react-router": "^1.170.39",
     "clsx": "^2.1.1",
+    "fflate": "^0.8.3",
     "jspdf": "^4.2.1",
     "jspdf-autotable": "^5.0.8",
     "lucide-react": "^0.575.0",

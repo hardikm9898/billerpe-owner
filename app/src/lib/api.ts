@@ -267,3 +267,34 @@ export interface BillDetail {
   cancelReason: string;
   activity: { at: string; action: string; label: string; by: string; role: string }[];
 }
+
+/* ------------------------------ phase 2 · reports ------------------------------ */
+
+export interface ReportDef {
+  id: string;
+  group: string;
+  name: string;
+  desc: string;
+  views: { key: string; label: string }[];
+}
+export interface ReportColumn {
+  key: string;
+  label: string;
+  money?: boolean;
+  num?: boolean;
+}
+export interface ReportResult {
+  serverTime: string;
+  id: string;
+  title: string;
+  view: string | null;
+  views: { key: string; label: string }[];
+  outlets: string[];
+  range: { from: string; to: string };
+  columns: ReportColumn[];
+  rows: Record<string, string | number>[];
+  totals?: Record<string, string | number>;
+  summary: { label: string; value: number | string; money?: boolean }[];
+  visual: { money: boolean; items: { label: string; outlet?: string; sub: string; value: number; unit: string; min?: number; low?: boolean }[]; more: number } | null;
+  note: string | null;
+}
