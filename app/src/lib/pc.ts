@@ -11,11 +11,16 @@ export interface PcLine {
 }
 
 export function pcLine(pc: PcState, now: number): PcLine {
-  if (pc.status === "online") return { tone: "ok", label: `Online · last heard ${ago(pc.lastSeenAt, now)}`, short: "Online" };
+  if (pc.status === "online") {
+    const waiting = pc.pendingOrders ? ` · ${bills(pc.pendingOrders)} uploading` : "";
+    return { tone: "ok", label: `Online · last heard ${ago(pc.lastSeenAt, now)}${waiting}`, short: "Online" };
+  }
   if (pc.status === "offline") {
     if (!pc.lastSeenAt) return { tone: "warn", label: "Offline · never connected", short: "Offline" };
     // "Offline 15 min · last heard 4:14 PM" (a clock time, not "15 min ago" twice).
     const recent = now - new Date(pc.lastSeenAt).getTime() < 20 * 3600 * 1000;
+    // An offline PC with bills on it: the count is the one it reported last.
+    if (pc.pendingOrders) return { tone: "warn", label: `Offline ${since(pc.lastSeenAt, now)} · ${bills(pc.pendingOrders)} waiting`, short: "Offline" };
     return { tone: "warn", label: `Offline ${since(pc.lastSeenAt, now)} · last heard ${recent ? time(pc.lastSeenAt) : ago(pc.lastSeenAt, now)}`, short: "Offline" };
   }
   return { tone: "muted", label: "No outlet PC registered yet", short: "Not set up" };
@@ -42,5 +47,7 @@ export function updateLine(status: string | null): { tone: "ok" | "warn" | "info
       return null;
   }
 }
+
+export const bills = (n: number) => `${n} bill${n === 1 ? "" : "s"}`;
 
 export const lastHeardAt = (pc: PcState) => (pc.lastSeenAt ? time(pc.lastSeenAt) : "—");

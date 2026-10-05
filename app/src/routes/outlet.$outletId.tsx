@@ -73,6 +73,18 @@ function OutletScreen() {
         <>
           <Section title="Details" />
           <div className="mx-4 overflow-hidden rounded-[20px] bg-surface">
+            <Row
+              title="Data synced"
+              sub={pc.lastPushAt ? "Bills reach the cloud every 3 min" : "Update BillerPe on this PC to see this"}
+              end={pc.lastPushAt ? time(pc.lastPushAt) : "—"}
+              endTag={pc.lastPushAt ? <span className="text-[11.5px] font-bold text-ink-2">{ago(pc.lastPushAt, now)}</span> : null}
+            />
+            <Row
+              title="Bills waiting to upload"
+              sub={pc.pendingOrders === null ? "Update BillerPe on this PC to see this" : pc.status === "offline" && pc.pendingOrders ? "On the PC; they upload when it reconnects" : "Made on the PC, not yet in the cloud"}
+              end={pc.pendingOrders === null ? "—" : String(pc.pendingOrders)}
+              endTag={pc.pendingOrders ? <Tag tone="warn">Waiting</Tag> : null}
+            />
             <Row title="BillerPe server" sub={update?.text || "On the outlet PC"} end={pc.version || "—"} endTag={update ? <Tag tone={update.tone}>{update.tone === "warn" ? "Needs help" : "Updating"}</Tag> : pc.version ? <Tag tone="ok">Running</Tag> : null} />
             <Row title="PC name" sub="The registered outlet PC" end={pc.pcName || "—"} />
             <Row title="Registered since" sub="When this PC became the outlet's server" end={pc.registeredAt ? fullDate(pc.registeredAt) : "—"} />

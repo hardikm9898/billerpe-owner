@@ -232,3 +232,15 @@ management most. Phases 1–2 are read-only, so they are safe to give to owners 
 4. Restart the backend.
 
 **Test login:** the owner's mobile + Web POS password of any Plan 1 outlet.
+
+### Outlet PC backlog — built 5 Oct 2026 (owner approved the exe change)
+- **Exe** (`billerpe-local-exe` 840926f on `main`): the 60 s heartbeat also sends
+  `x-exe-pending-orders` and `x-exe-last-push-age`. No new requests. Ships with the next exe release.
+  `verify-sync-v2.js` checks it (step 12).
+- **Cloud** (`uat-backend-v2` 9ee6e31): stored on the registration (migration 20261005110000);
+  `/owner/v1 outlets` returns `pc.pendingOrders` / `pc.lastPushAt`. 43 owner tests pass.
+- **App 0.1.1:** outlet cards say "Offline 14 min · 6 bills waiting"; the PC screen shows
+  "Data synced" and "Bills waiting to upload". A PC on an older BillerPe shows "—" with
+  "Update BillerPe on this PC to see this".
+
+**Server steps (in addition to phase 0):** `npm run migrate` also runs 20261005110000.

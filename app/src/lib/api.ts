@@ -34,6 +34,10 @@ export interface PcState {
   updateStatus: string | null;
   pcName: string | null;
   registeredAt: string | null;
+  /** Bills on the PC not yet in the cloud; null = the PC's BillerPe is too old to report it (exe < 1.1.7). */
+  pendingOrders: number | null;
+  /** When the PC last uploaded its bills successfully; null = not reported. */
+  lastPushAt: string | null;
 }
 export interface Outlet {
   id: number;
