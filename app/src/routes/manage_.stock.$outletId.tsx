@@ -77,7 +77,7 @@ function StockScreen() {
                         {qty(r.stock ?? 0)} {unit(r.unitId)}
                       </span>
                     </div>
-                    <div className="my-2 h-2 overflow-hidden rounded bg-[#F1EBE5]">
+                    <div className="my-2 h-2 overflow-hidden rounded bg-track">
                       <i className="block h-2 rounded bg-brand" style={{ width: `${r.reorderLevel > 0 ? Math.max(2, Math.min(100, ((r.stock ?? 0) / r.reorderLevel) * 100)) : 100}%` }} />
                     </div>
                     <div className="text-[12.5px] font-semibold text-ink-2">
@@ -112,7 +112,7 @@ function StockScreen() {
                       </div>
                     </div>
                     {r.low && <span className="rounded-full bg-brand-soft px-2 py-0.5 text-[11px] font-extrabold text-brand">Low</span>}
-                    <ChevronRight className="size-4 text-[#9A8F88]" />
+                    <ChevronRight className="size-4 text-chev" />
                   </button>
                 ))}
               </div>
@@ -165,12 +165,12 @@ function StockScreen() {
                       <div className="min-w-0 flex-1">
                         <div className="truncate text-[14.5px] font-bold">{r.itemName}</div>
                         <div className="text-[12.5px] font-semibold text-ink-2">
-                          {r.base.length} ingredient{r.base.length === 1 ? "" : "s"}
+                          {`${r.base.length} ingredient${r.base.length === 1 ? "" : "s"}`}
                           {r.variants ? ` · ${r.variants} by variant` : ""}
                           {r.addons ? ` · ${r.addons} by add-on` : ""}
                         </div>
                       </div>
-                      <ChevronRight className="size-4 text-[#9A8F88]" />
+                      <ChevronRight className="size-4 text-chev" />
                     </button>
                   ))}
                 </div>
@@ -189,7 +189,7 @@ function StockScreen() {
                   <div className="text-[14.5px] font-bold">{r.title}</div>
                   <div className="text-[12.5px] font-semibold text-ink-2">{r.sub}</div>
                 </div>
-                <ChevronRight className="size-5 text-[#9A8F88]" />
+                <ChevronRight className="size-5 text-chev" />
               </Link>
             ))}
           </div>

@@ -3,6 +3,7 @@ import { Preferences } from "@capacitor/preferences";
 import * as api from "./api";
 import { deviceInfo } from "./device";
 import { startPush } from "./push";
+import { currentLang, onLangChange } from "./i18n";
 
 // Who is logged in on this phone. The token is kept in app storage and
 // checked with the server at every app start (resume); any 401 later sends
@@ -13,7 +14,8 @@ const KEY = "owner.session";
 type State =
   | { status: "loading" }
   | { status: "out"; notice?: string }
-  | { status: "in"; session: api.Session };
+  /** resumed = a saved login opened again (the fingerprint lock asks first). */
+  | { status: "in"; session: api.Session; resumed?: boolean };
 
 interface SessionApi {
   state: State;
@@ -59,11 +61,11 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       const r = await api.resume(saved.token, await deviceInfo());
       if (r.ok) {
         api.setToken(r.session.token);
-        setState({ status: "in", session: r.session });
+        setState({ status: "in", session: r.session, resumed: true });
       } else if (r.error === "network") {
         // Offline at start: keep the session; screens show the network error and retry.
         api.setToken(saved.token);
-        setState({ status: "in", session: saved });
+        setState({ status: "in", session: saved, resumed: true });
       } else {
         await end("Your session has ended. Please log in again.");
       }
@@ -78,6 +80,14 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       (t) => void api.call("setPushToken", t).catch(() => {}),
       (link) => setPendingLink(link),
     );
+  }, [loggedIn]);
+
+  // The server writes this phone's notifications in its language.
+  useEffect(() => {
+    if (!loggedIn) return;
+    const send = () => void api.call("setLanguage", currentLang()).catch(() => {});
+    send();
+    return onLangChange(send);
   }, [loggedIn]);
 
   const login = useCallback(async (mobile: string, password: string) => {

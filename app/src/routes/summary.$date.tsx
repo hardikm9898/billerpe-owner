@@ -114,7 +114,7 @@ function SummaryScreen() {
                       <span className="truncate font-bold">{o.name.includes(" · ") ? o.name.split(" · ").pop() : o.name}</span>
                       <span className="num font-extrabold">{money(o.net)}</span>
                     </div>
-                    <div className="mt-1.5 h-2 overflow-hidden rounded bg-[#F1EBE5]">
+                    <div className="mt-1.5 h-2 overflow-hidden rounded bg-track">
                       <i className="block h-2 rounded bg-brand" style={{ width: `${Math.max(2, (o.net / max) * 100)}%` }} />
                     </div>
                   </div>

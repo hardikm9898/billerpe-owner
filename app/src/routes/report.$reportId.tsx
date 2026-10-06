@@ -122,7 +122,7 @@ function ReportScreen() {
                         <span className="truncate">{[r.outlets.length > 1 && i.outlet ? i.outlet : null, i.sub].filter(Boolean).join(" · ")}</span>
                         {r.visual!.money && total > 0 && i.value > 0 && <span className="shrink-0">{((i.value / total) * 100).toFixed(1)}%</span>}
                       </div>
-                      <div className="h-2 overflow-hidden rounded bg-[#F1EBE5]">
+                      <div className="h-2 overflow-hidden rounded bg-track">
                         {i.min !== undefined ? (
                           <i className={cn("block h-2 rounded", i.low ? "bg-brand" : "bg-ok")} style={{ width: `${i.min > 0 ? Math.max(2, Math.min(100, (Math.max(0, i.value) / i.min) * 100)) : 100}%` }} />
                         ) : (

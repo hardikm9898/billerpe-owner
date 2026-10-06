@@ -220,7 +220,7 @@ function OutletCard({ outlet, row, total, now }: { outlet: Outlet; row: HomeOutl
     <Link
       to="/outlet/$outletId"
       params={{ outletId: String(outlet.id) }}
-      className={cn("block rounded-[18px] bg-surface p-4 text-ink", line.tone === "warn" && "shadow-[inset_0_0_0_1.5px_#EBC48F]")}
+      className={cn("block rounded-[18px] bg-surface p-4 text-ink", line.tone === "warn" && "shadow-[inset_0_0_0_1.5px_var(--color-warn-line)]")}
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
@@ -237,7 +237,7 @@ function OutletCard({ outlet, row, total, now }: { outlet: Outlet; row: HomeOutl
           </div>
         </div>
       </div>
-      <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-[#F1EBE5]">
+      <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-track">
         <div className={cn("h-1.5 rounded-full", line.tone === "warn" ? "bg-[#C9A27E]" : "bg-brand")} style={{ width: `${share}%` }} />
       </div>
     </Link>

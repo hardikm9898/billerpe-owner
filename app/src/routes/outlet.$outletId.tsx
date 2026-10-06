@@ -91,7 +91,7 @@ function OutletScreen() {
               </div>
               {x.cancelled > 0 && (
                 <Link to="/bills" search={{ filter: "cancelled", outlet: x.id, range: x.range.key === "custom" ? undefined : x.range.key }} className="mt-3 block text-[12.5px] font-bold text-brand">
-                  {x.cancelled} cancelled bill{x.cancelled === 1 ? "" : "s"} →
+                  {`${x.cancelled} cancelled bill${x.cancelled === 1 ? "" : "s"} →`}
                 </Link>
               )}
             </Card>
@@ -213,7 +213,7 @@ function HourBars({ hours, nowIndex }: { hours: { hour: number; amount: number }
         {shown.map((h, i) => (
           <i
             key={h.hour}
-            className={cn("flex-1 rounded", h === peak ? "bg-brand" : "bg-[#F0D2D5]", nowIndex !== null && start + i > nowIndex && "opacity-50")}
+            className={cn("flex-1 rounded", h === peak ? "bg-brand" : "bg-bar", nowIndex !== null && start + i > nowIndex && "opacity-50")}
             style={{ height: `${Math.max(4, Math.round((h.amount / max) * 84))}px` }}
           />
         ))}
@@ -236,7 +236,7 @@ function DayBars({ days }: { days: { day: string; amount: number }[] }) {
     <>
       <div className="mt-3.5 flex h-[84px] items-end gap-1" aria-label="Sales by day">
         {days.map((d) => (
-          <i key={d.day} className={cn("flex-1 rounded", d === best && d.amount > 0 ? "bg-brand" : "bg-[#F0D2D5]")} style={{ height: `${Math.max(4, Math.round((d.amount / max) * 84))}px` }} />
+          <i key={d.day} className={cn("flex-1 rounded", d === best && d.amount > 0 ? "bg-brand" : "bg-bar")} style={{ height: `${Math.max(4, Math.round((d.amount / max) * 84))}px` }} />
         ))}
       </div>
       <div className="mt-1.5 flex justify-between text-[11px] font-semibold text-ink-3">

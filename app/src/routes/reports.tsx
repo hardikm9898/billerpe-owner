@@ -96,7 +96,7 @@ function Reports() {
                         <div className="truncate text-[14.5px] font-bold">{r.name}</div>
                         <div className="truncate text-[12.5px] font-semibold text-ink-2">{r.desc}</div>
                       </div>
-                      <ChevronRight className="size-5 shrink-0 text-[#9A8F88]" />
+                      <ChevronRight className="size-5 shrink-0 text-chev" />
                     </Link>
                   );
                 })}

@@ -13,6 +13,10 @@ import { Capacitor } from "@capacitor/core";
 import { App as CapApp } from "@capacitor/app";
 import { StatusBar, Style } from "@capacitor/status-bar";
 import { router } from "./router";
+import { initI18n } from "./lib/i18n";
+import { initTheme } from "./lib/theme";
+
+initTheme();
 
 // Android back button: step back through the app; from a tab's first screen
 // put the app in the background instead of closing it to a blank view.
@@ -26,8 +30,11 @@ if (Capacitor.isNativePlatform()) {
   void StatusBar.setBackgroundColor({ color: "#201815" }).catch(() => {});
 }
 
-createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <RouterProvider router={router} />
-  </StrictMode>,
+// The phone's language first, so the first screen is already in it.
+void initI18n().finally(() =>
+  createRoot(document.getElementById("root")!).render(
+    <StrictMode>
+      <RouterProvider router={router} />
+    </StrictMode>,
+  ),
 );

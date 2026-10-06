@@ -171,13 +171,13 @@ function Editor({ data, staffId, outletId, outletName, onDone }: { data: ManageS
             const g = perms.modules[m.key] ?? { view: false, create: false, edit: false, delete: false };
             const diff = changed.has(m.key);
             return (
-              <div key={m.key} className={cn("-mx-3.5 grid min-h-[44px] grid-cols-[1fr_repeat(4,44px)] items-center border-t border-line px-3.5 text-center", diff && "bg-[#FFF7EC]")}>
+              <div key={m.key} className={cn("-mx-3.5 grid min-h-[44px] grid-cols-[1fr_repeat(4,44px)] items-center border-t border-line px-3.5 text-center", diff && "bg-changed")}>
                 <span className="text-left text-[13.5px] font-bold">
                   {m.label}
                   {diff && <span className="ml-1 text-[11px] text-warn">changed</span>}
                 </span>
                 {ACTIONS.map((a) => (
-                  <input key={a} type="checkbox" checked={!!g[a]} onChange={(e) => setGrant(m.key, a, e.target.checked)} aria-label={`${m.label} ${ACTION_LABEL[a]}`} className="mx-auto size-[18px] accent-[#AE0A1E]" />
+                  <input key={a} type="checkbox" checked={!!g[a]} onChange={(e) => setGrant(m.key, a, e.target.checked)} aria-label={`${m.label} ${ACTION_LABEL[a]}`} className="mx-auto size-[18px] accent-brand" />
                 ))}
               </div>
             );
@@ -186,7 +186,7 @@ function Editor({ data, staffId, outletId, outletName, onDone }: { data: ManageS
             <div className="mt-2 border-t border-line pt-2.5">
               <div className="pb-1 text-[12px] font-extrabold text-ink-2">Special permissions</div>
               {SPECIALS.map((sp) => (
-                <label key={sp.key} className={cn("-mx-3.5 flex min-h-[44px] items-center gap-3 px-3.5", changed.has(sp.key) && "bg-[#FFF7EC]")}>
+                <label key={sp.key} className={cn("-mx-3.5 flex min-h-[44px] items-center gap-3 px-3.5", changed.has(sp.key) && "bg-changed")}>
                   <input
                     type="checkbox"
                     checked={!!perms.special[sp.key]}
@@ -194,7 +194,7 @@ function Editor({ data, staffId, outletId, outletName, onDone }: { data: ManageS
                       setCustom(true);
                       setPerms((p) => ({ ...p, special: { ...p.special, [sp.key]: e.target.checked } }));
                     }}
-                    className="size-[18px] accent-[#AE0A1E]"
+                    className="size-[18px] accent-brand"
                   />
                   <span className="text-[13.5px] font-bold">{sp.label}</span>
                 </label>

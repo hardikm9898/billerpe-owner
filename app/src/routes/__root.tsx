@@ -3,6 +3,8 @@ import { refreshAlertCount } from "@/lib/alertCount";
 import { useEffect } from "react";
 import { LoginScreen } from "@/components/LoginScreen";
 import { SessionProvider, useSession } from "@/lib/session";
+import { useLang } from "@/lib/i18n";
+import { AppLock } from "@/components/AppLock";
 import mark from "@/assets/billerpe-mark.png";
 
 export const Route = createRootRoute({
@@ -23,6 +25,8 @@ function Root() {
 function Gate() {
   const { state, pendingLink, clearPendingLink } = useSession();
   const router = useRouter();
+  // A new language draws every screen again (dates and month names come from code).
+  const lang = useLang();
 
   // A tapped notification opens its screen once the app is ready (the
   // link may carry a query, so the history takes the whole address).
@@ -36,7 +40,12 @@ function Gate() {
 
   if (state.status === "loading") return <Splash />;
   if (state.status === "out") return <LoginScreen notice={state.notice} />;
-  return <Outlet />;
+  return (
+    <>
+      <Outlet key={lang} />
+      <AppLock />
+    </>
+  );
 }
 
 function Splash() {

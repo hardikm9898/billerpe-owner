@@ -1,18 +1,25 @@
-// Times and money as an owner in India reads them.
+import { locale } from "./i18n";
 
-const timeFmt = new Intl.DateTimeFormat("en-IN", { hour: "numeric", minute: "2-digit", hour12: true });
-const dayFmt = new Intl.DateTimeFormat("en-IN", { day: "numeric", month: "short" });
-const fullFmt = new Intl.DateTimeFormat("en-IN", { day: "numeric", month: "short", year: "numeric" });
-const weekdayFmt = new Intl.DateTimeFormat("en-IN", { weekday: "short", day: "numeric", month: "short" });
+// Times and money as an owner in India reads them. Month and day names
+// follow the phone's language (Profile); digits stay 0-9.
+
+const cache = new Map<string, Intl.DateTimeFormat>();
+const fmt = (key: string, o: Intl.DateTimeFormatOptions) => {
+  const k = `${locale()}|${key}`;
+  let f = cache.get(k);
+  if (!f) cache.set(k, (f = new Intl.DateTimeFormat(locale(), { ...o, numberingSystem: "latn" })));
+  return f;
+};
 
 /** "8:52 PM" */
-export const time = (d: Date | string) => timeFmt.format(new Date(d)).replace("am", "AM").replace("pm", "PM");
+export const time = (d: Date | string) =>
+  fmt("t", { hour: "numeric", minute: "2-digit", hour12: true }).format(new Date(d)).replace("am", "AM").replace("pm", "PM");
 /** "5 Oct" */
-export const day = (d: Date | string) => dayFmt.format(new Date(d));
+export const day = (d: Date | string) => fmt("d", { day: "numeric", month: "short" }).format(new Date(d));
 /** "12 Sep 2026" */
-export const fullDate = (d: Date | string) => fullFmt.format(new Date(d));
+export const fullDate = (d: Date | string) => fmt("f", { day: "numeric", month: "short", year: "numeric" }).format(new Date(d));
 /** "Sun, 5 Oct" */
-export const weekday = (d: Date | string) => weekdayFmt.format(new Date(d));
+export const weekday = (d: Date | string) => fmt("w", { weekday: "short", day: "numeric", month: "short" }).format(new Date(d));
 
 /**
  * "40 sec ago", "14 min ago", "3 h ago", "2 Oct, 3:10 PM". `now` is the

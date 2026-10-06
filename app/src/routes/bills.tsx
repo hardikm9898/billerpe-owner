@@ -154,7 +154,7 @@ function BillLine({ b, showOutlet, showDay }: { b: BillRow; showOutlet: boolean;
     <Link
       to="/bill/$outletId/$billId"
       params={{ outletId: String(b.outletId), billId: b.id }}
-      className={cn("flex min-h-[64px] items-center gap-3 border-t border-line px-3.5 py-3 text-ink first:border-t-0", cancelled && "bg-[#FFF8F8]")}
+      className={cn("flex min-h-[64px] items-center gap-3 border-t border-line px-3.5 py-3 text-ink first:border-t-0", cancelled && "bg-cancelled-row")}
     >
       <div className="min-w-0 flex-1">
         <div className="truncate text-[14.5px] font-bold">
@@ -166,7 +166,7 @@ function BillLine({ b, showOutlet, showDay }: { b: BillRow; showOutlet: boolean;
         <span className={cn("num text-[15px] font-extrabold", cancelled && "text-ink-3 line-through")}>{money(b.amount)}</span>
         <Tag tone={b.tag.tone}>{b.tag.text}</Tag>
       </div>
-      <ChevronRight className="size-4 shrink-0 text-[#9A8F88]" />
+      <ChevronRight className="size-4 shrink-0 text-chev" />
     </Link>
   );
 }

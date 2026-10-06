@@ -68,16 +68,17 @@ function Manage() {
         <>
           <div className="px-4 pt-3">
             {x.pending > 0 ? (
-              <div className={cn("flex gap-2.5 rounded-2xl px-3.5 py-3 text-[12.5px] font-semibold leading-relaxed", pcOnline ? "bg-info-soft text-[#173E8F]" : "bg-warn-soft text-warn")}>
+              <div className={cn("flex gap-2.5 rounded-2xl px-3.5 py-3 text-[12.5px] font-semibold leading-relaxed", pcOnline ? "bg-info-soft text-info-ink" : "bg-warn-soft text-warn")}>
                 {pcOnline ? <RefreshCw className="mt-0.5 size-[18px] shrink-0" /> : <CloudOff className="mt-0.5 size-[18px] shrink-0" />}
                 <span>
-                  {x.pending} change{x.pending === 1 ? "" : "s"} waiting for the outlet PC
+                  {/* One string per phrase, so Hindi / Gujarati can translate it whole. */}
+                  {`${x.pending} change${x.pending === 1 ? "" : "s"} waiting for the outlet PC`}
                   {x.pendingSince ? ` (since ${since(x.pendingSince, now)})` : ""}.{" "}
                   {pcOnline ? "The PC is online - it downloads them in about a minute." : "The PC is offline - they apply when it reconnects."}
                 </span>
               </div>
             ) : (
-              <div className={cn("flex gap-2.5 rounded-2xl px-3.5 py-3 text-[12.5px] font-semibold leading-relaxed", pcOnline ? "bg-info-soft text-[#173E8F]" : "bg-warn-soft text-warn")}>
+              <div className={cn("flex gap-2.5 rounded-2xl px-3.5 py-3 text-[12.5px] font-semibold leading-relaxed", pcOnline ? "bg-info-soft text-info-ink" : "bg-warn-soft text-warn")}>
                 {pcOnline ? <RefreshCw className="mt-0.5 size-[18px] shrink-0" /> : <CloudOff className="mt-0.5 size-[18px] shrink-0" />}
                 <span>
                   {pcOnline
@@ -119,7 +120,7 @@ function Manage() {
                   {outlet.pc.version ? ` · v${outlet.pc.version}` : ""}
                 </div>
               </div>
-              <ChevronRight className="size-5 text-[#9A8F88]" />
+              <ChevronRight className="size-5 text-chev" />
             </Link>
           </div>
         </>
@@ -148,7 +149,7 @@ function Row({ to, id, section, icon, title, sub }: { to: "/manage/settings/$out
         <div className="text-[14.5px] font-bold">{title}</div>
         <div className="truncate text-[12.5px] font-semibold text-ink-2">{sub}</div>
       </div>
-      <ChevronRight className="size-5 text-[#9A8F88]" />
+      <ChevronRight className="size-5 text-chev" />
     </Link>
   );
 }

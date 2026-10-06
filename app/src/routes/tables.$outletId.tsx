@@ -101,7 +101,7 @@ function TablesScreen() {
             <Legend className="bg-[#F0B7BD]">Running</Legend>
             <Legend className="bg-[#F2CD95]">Bill printed</Legend>
             <Legend className="border-2 border-brand">Open over 90 min</Legend>
-            <Legend className="border border-dashed border-[#B9AEA6]">Free</Legend>
+            <Legend className="border border-dashed border-free">Free</Legend>
           </div>
         </>
       ) : null}

@@ -314,3 +314,24 @@ the Owner Firebase project.
 
 **Server step:** `OWNER_FIREBASE_SERVICE_ACCOUNT_FILE` must be set for pushes (alerts still appear in
 the app without it).
+
+### Phase 5 · Polish & release — built 6 Oct 2026 (app 1.0.0)
+- **Hindi + Gujarati on every screen** (Profile → Language, per phone, switches at once, kept after
+  reopening; dates and month names follow). 782 phrases per language in `app/src/lib/i18n/hi.json`
+  and `gu.json`. Names (outlets, items, staff, tables) are never translated. Checked by opening every
+  screen and sheet in both languages: no English left except names, units and brand words.
+  PDF and Excel files stay in English (for the accountant; Hindi letters need an embedded font).
+- **Push notifications in the phone's language:** the cloud translates each push with the same
+  dictionaries (`uat-backend-v2/ownerv1/i18n.js`, copies in `ownerv1/i18n/`). After changing a
+  dictionary run `node app/scripts/copy-dicts-to-cloud.cjs` and commit both repos.
+- **Fingerprint lock** (Profile → Security & help, on by default when the phone has a fingerprint):
+  asks on a cold start and after more than a minute away; "Log out and use the password" if it fails.
+  The screen stays covered until the phone answers, so no data flashes first.
+- **Dark mode** (Profile), off by default.
+- **Speed:** with ~300 bills a day, a 30-day report or outlet screen answers in ~0.4 s.
+- Tests: owner API 157 pass, POS App 234; walkthroughs Watch 42/43 (the one miss is a time-of-day
+  paging check in the test itself), Reports 28, Manage 35, Alerts 26, language/dark switches 17.
+- **Cloud** `uat-backend-v2` 80add1a (no migration). **APK** `builds/BillerPe-Owner-1.0.0-debug.apk`.
+
+**Before handing to owners:** a native speaker reviews `hi.json` / `gu.json`; test on a real phone
+(push in Hindi, fingerprint, PDF/Excel share); release signing if it goes to the Play Store.

@@ -42,12 +42,12 @@ export function BottomNav() {
             <Link
               key={t.to}
               to={t.to}
-              className={cn("flex min-h-12 w-16 flex-col items-center gap-[3px] text-[11px] font-bold", on ? "text-brand" : "text-[#6B615B]")}
+              className={cn("flex min-h-12 w-16 flex-col items-center gap-[3px] text-[11px] font-bold", on ? "text-brand" : "text-nav-off")}
             >
               <span className={cn("relative flex h-[30px] w-[54px] items-center justify-center rounded-full", on && "bg-brand-soft")}>
                 <Icon className="size-5" strokeWidth={1.9} />
                 {t.to === "/alerts" && unread > 0 && (
-                  <span aria-label={`${unread} unread`} className="absolute right-2 top-0 flex h-[17px] min-w-[17px] items-center justify-center rounded-full border-2 border-white bg-brand px-1 text-[10px] font-extrabold text-white">
+                  <span aria-label={`${unread} unread`} className="absolute right-2 top-0 flex h-[17px] min-w-[17px] items-center justify-center rounded-full border-2 border-surface bg-brand px-1 text-[10px] font-extrabold text-white">
                     {unread > 99 ? "99+" : unread}
                   </span>
                 )}

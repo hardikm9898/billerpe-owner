@@ -14,7 +14,7 @@ export function Switch({ on, onChange, label, disabled }: { on: boolean; onChang
       aria-label={label}
       disabled={disabled}
       onClick={() => onChange(!on)}
-      className={cn("relative h-7 w-[46px] shrink-0 rounded-full transition-colors disabled:opacity-50", on ? "bg-ok" : "bg-[#D8CEC6]")}
+      className={cn("relative h-7 w-[46px] shrink-0 rounded-full transition-colors disabled:opacity-50", on ? "bg-ok" : "bg-switch-off")}
     >
       <span className={cn("absolute top-[3px] size-[22px] rounded-full bg-white shadow transition-all", on ? "left-[21px]" : "left-[3px]")} />
     </button>

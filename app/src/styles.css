@@ -28,6 +28,60 @@
   --color-info: #1e4fb8;
   --color-info-soft: #e6eefb;
   --color-muted-soft: #efe9e3;
+
+  /* Small parts that were fixed colours in design v1. */
+  --color-chev: #9a8f88;
+  --color-track: #f1ebe5;
+  --color-switch-off: #d8cec6;
+  --color-nav-off: #6b615b;
+  --color-changed: #fff7ec;
+  --color-cancelled-row: #fff8f8;
+  --color-bar: #f0d2d5;
+  --color-free: #b9aea6;
+  --color-info-ink: #173e8f;
+  --color-ok-ink: #1f5a36;
+  --color-warn-ink: #6e3a0a;
+  --color-warn-line: #ebc48f;
+}
+
+/* Dark mode (Profile -> Dark mode; off by default, so the app looks like
+   design v1 unless the owner turns it on). Same names, night colours: the
+   hero cards stay a shade lighter than the ground so they still stand out. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-ground: #13100e;
+  --color-surface: #1e1916;
+  --color-ink: #f4ede8;
+  --color-ink-2: #b9ada5;
+  --color-ink-3: #9a8e86;
+  --color-line: #2c2421;
+  --color-line-2: #3a302c;
+  --color-brand: #e0283f;
+  --color-brand-dark: #b81a2e;
+  --color-brand-soft: #3b1a1e;
+  --color-dark: #2a211d;
+  --color-dark-line: #40332e;
+  --color-on-dark: #fbf5f1;
+  --color-on-dark-2: #cdbfb7;
+  --color-ok: #5cc985;
+  --color-ok-soft: #16301f;
+  --color-warn: #f0a650;
+  --color-warn-soft: #35270f;
+  --color-info: #86a9f5;
+  --color-info-soft: #172440;
+  --color-muted-soft: #2a2320;
+  --color-chev: #7f746d;
+  --color-track: #2e2623;
+  --color-switch-off: #4a3f3a;
+  --color-nav-off: #a99d96;
+  --color-changed: #33280f;
+  --color-cancelled-row: #2a1517;
+  --color-bar: #4a2328;
+  --color-free: #5a4f4a;
+  --color-info-ink: #b0c6f6;
+  --color-ok-ink: #a3dfb9;
+  --color-warn-ink: #f5c993;
+  --color-warn-line: #6b4c1f;
 }
 
 html,

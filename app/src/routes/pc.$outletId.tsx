@@ -48,8 +48,8 @@ function OutletPcScreen() {
   const line = pcLine(pc, now);
   const update = updateLine(pc.updateStatus);
   const big = {
-    ok: { box: "bg-ok-soft", circle: "bg-ok", text: "text-ok", sub: "text-[#1F5A36]", icon: Monitor },
-    warn: { box: "bg-warn-soft", circle: "bg-warn", text: "text-warn", sub: "text-[#6E3A0A]", icon: WifiOff },
+    ok: { box: "bg-ok-soft", circle: "bg-ok", text: "text-ok", sub: "text-ok-ink", icon: Monitor },
+    warn: { box: "bg-warn-soft", circle: "bg-warn", text: "text-warn", sub: "text-warn-ink", icon: WifiOff },
     muted: { box: "bg-muted-soft", circle: "bg-ink-3", text: "text-ink-2", sub: "text-ink-2", icon: Monitor },
   }[line.tone];
   const BigIcon = big.icon;

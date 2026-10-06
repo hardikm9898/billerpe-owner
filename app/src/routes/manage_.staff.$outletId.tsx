@@ -73,7 +73,7 @@ function StaffScreen() {
                   </div>
                 </div>
                 <Tag tone={s.active ? "ok" : "muted"}>{s.active ? "Active" : "Off"}</Tag>
-                <ChevronRight className="size-4 shrink-0 text-[#9A8F88]" />
+                <ChevronRight className="size-4 shrink-0 text-chev" />
               </Link>
             ))}
           </div>
