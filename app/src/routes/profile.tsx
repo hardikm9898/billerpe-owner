@@ -1,5 +1,5 @@
-import { createFileRoute, useRouterState } from "@tanstack/react-router";
-import { ChevronRight, Fingerprint, Loader2, LogOut, Moon, Phone } from "lucide-react";
+import { Link, createFileRoute, useRouterState } from "@tanstack/react-router";
+import { ChevronRight, Fingerprint, LifeBuoy, Loader2, LogOut, Moon, Phone } from "lucide-react";
 import { useEffect, useState } from "react";
 import { AlertRules } from "@/components/AlertRules";
 import { setLockEnabled, useLockSetting } from "@/components/AppLock";
@@ -81,6 +81,14 @@ function Profile() {
           </div>
           <Switch on={dark} onChange={setDark} label="Dark mode" />
         </div>
+        <Link to="/support" className="flex min-h-[60px] items-center gap-3 border-t border-line px-3.5 py-3 text-ink">
+          <IconTile tone="muted" icon={LifeBuoy} />
+          <div className="min-w-0 flex-1">
+            <div className="text-[14.5px] font-bold">Support tickets</div>
+            <div className="text-[12.5px] font-semibold text-ink-2">Raise a ticket, read BillerPe's replies</div>
+          </div>
+          <ChevronRight className="size-5 text-chev" />
+        </Link>
         <a href={`tel:${SUPPORT}`} className="flex min-h-[60px] items-center gap-3 border-t border-line px-3.5 py-3 text-ink">
           <IconTile tone="muted" icon={Phone} />
           <div className="min-w-0 flex-1">

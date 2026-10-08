@@ -15,6 +15,7 @@ import { Route as BillsRouteImport } from "./routes/bills"
 import { Route as ManageRouteImport } from "./routes/manage"
 import { Route as ProfileRouteImport } from "./routes/profile"
 import { Route as ReportsRouteImport } from "./routes/reports"
+import { Route as SupportRouteImport } from "./routes/support"
 import { Route as OutletOutletIdRouteImport } from "./routes/outlet.$outletId"
 import { Route as PcOutletIdRouteImport } from "./routes/pc.$outletId"
 import { Route as ReportReportIdRouteImport } from "./routes/report.$reportId"
@@ -56,6 +57,11 @@ const ProfileRoute = ProfileRouteImport.update({
 const ReportsRoute = ReportsRouteImport.update({
   id: "/reports",
   path: "/reports",
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SupportRoute = SupportRouteImport.update({
+  id: "/support",
+  path: "/support",
   getParentRoute: () => rootRouteImport,
 } as any)
 const OutletOutletIdRoute = OutletOutletIdRouteImport.update({
@@ -128,6 +134,7 @@ export interface FileRoutesByFullPath {
   "/manage": typeof ManageRoute
   "/profile": typeof ProfileRoute
   "/reports": typeof ReportsRoute
+  "/support": typeof SupportRoute
   "/outlet/$outletId": typeof OutletOutletIdRoute
   "/pc/$outletId": typeof PcOutletIdRoute
   "/report/$reportId": typeof ReportReportIdRoute
@@ -148,6 +155,7 @@ export interface FileRoutesByTo {
   "/manage": typeof ManageRoute
   "/profile": typeof ProfileRoute
   "/reports": typeof ReportsRoute
+  "/support": typeof SupportRoute
   "/outlet/$outletId": typeof OutletOutletIdRoute
   "/pc/$outletId": typeof PcOutletIdRoute
   "/report/$reportId": typeof ReportReportIdRoute
@@ -169,6 +177,7 @@ export interface FileRoutesById {
   "/manage": typeof ManageRoute
   "/profile": typeof ProfileRoute
   "/reports": typeof ReportsRoute
+  "/support": typeof SupportRoute
   "/outlet/$outletId": typeof OutletOutletIdRoute
   "/pc/$outletId": typeof PcOutletIdRoute
   "/report/$reportId": typeof ReportReportIdRoute
@@ -191,6 +200,7 @@ export interface FileRouteTypes {
     | "/manage"
     | "/profile"
     | "/reports"
+    | "/support"
     | "/outlet/$outletId"
     | "/pc/$outletId"
     | "/report/$reportId"
@@ -211,6 +221,7 @@ export interface FileRouteTypes {
     | "/manage"
     | "/profile"
     | "/reports"
+    | "/support"
     | "/outlet/$outletId"
     | "/pc/$outletId"
     | "/report/$reportId"
@@ -231,6 +242,7 @@ export interface FileRouteTypes {
     | "/manage"
     | "/profile"
     | "/reports"
+    | "/support"
     | "/outlet/$outletId"
     | "/pc/$outletId"
     | "/report/$reportId"
@@ -252,6 +264,7 @@ export interface RootRouteChildren {
   ManageRoute: typeof ManageRoute
   ProfileRoute: typeof ProfileRoute
   ReportsRoute: typeof ReportsRoute
+  SupportRoute: typeof SupportRoute
   OutletOutletIdRoute: typeof OutletOutletIdRoute
   PcOutletIdRoute: typeof PcOutletIdRoute
   ReportReportIdRoute: typeof ReportReportIdRoute
@@ -308,6 +321,13 @@ declare module "@tanstack/react-router" {
       path: "/reports"
       fullPath: "/reports"
       preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    "/support": {
+      id: "/support"
+      path: "/support"
+      fullPath: "/support"
+      preLoaderRoute: typeof SupportRouteImport
       parentRoute: typeof rootRouteImport
     }
     "/outlet/$outletId": {
@@ -404,6 +424,7 @@ const rootRouteChildren: RootRouteChildren = {
   ManageRoute: ManageRoute,
   ProfileRoute: ProfileRoute,
   ReportsRoute: ReportsRoute,
+  SupportRoute: SupportRoute,
   OutletOutletIdRoute: OutletOutletIdRoute,
   PcOutletIdRoute: PcOutletIdRoute,
   ReportReportIdRoute: ReportReportIdRoute,
