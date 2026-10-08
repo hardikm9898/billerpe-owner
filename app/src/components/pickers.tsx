@@ -112,7 +112,7 @@ export function OutletPicker({ value, onChange, outlets, allowAll = true }: { va
         <div className="overflow-hidden rounded-[20px] bg-surface">
           {allowAll && outlets.length > 1 && <PickRow label="All outlets" sub={`${outlets.length} outlets together`} on={value === "all"} onClick={() => pick("all")} />}
           {outlets.map((o) => (
-            <PickRow key={o.id} label={o.name} sub={o.pc.status === "online" ? "PC online" : o.pc.status === "offline" ? "PC offline" : "No PC yet"} on={value === o.id} onClick={() => pick(o.id)} />
+            <PickRow key={o.id} label={o.name} sub={o.planExpired ? "Plan ended: locked" : o.pc.status === "online" ? "PC online" : o.pc.status === "offline" ? "PC offline" : "No PC yet"} on={value === o.id} onClick={() => pick(o.id)} />
           ))}
         </div>
       </Sheet>

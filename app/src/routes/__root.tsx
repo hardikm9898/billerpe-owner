@@ -5,6 +5,7 @@ import { LoginScreen } from "@/components/LoginScreen";
 import { SessionProvider, useSession } from "@/lib/session";
 import { useLang } from "@/lib/i18n";
 import { AppLock } from "@/components/AppLock";
+import { PlanLockHost } from "@/components/PlanLock";
 import mark from "@/assets/billerpe-mark.png";
 
 export const Route = createRootRoute({
@@ -43,6 +44,7 @@ function Gate() {
   return (
     <>
       <Outlet key={lang} />
+      <PlanLockHost />
       <AppLock />
     </>
   );

@@ -43,7 +43,21 @@ export interface Outlet {
   id: number;
   name: string;
   subscriptionEndsOn: string | null;
+  /** The outlet's BillerPe plan has ended: its pages are locked until renewed. */
+  planExpired?: boolean;
   pc: PcState;
+}
+/** An outlet's plan as the lock dialog shows it (cloud adminv1/bil/renewals.js planState). */
+export interface PlanState {
+  hotelId: number;
+  outlet: string;
+  endsAt: string | null;
+  paidUntil: string | null;
+  expired: boolean;
+  inGrace: boolean;
+  graceUsed: boolean;
+  canExtend: boolean;
+  message: string | null;
 }
 export interface OutletsResult {
   serverTime: string;
@@ -67,8 +81,16 @@ export class SessionEndedError extends Error {
   }
 }
 
+/** The outlet's BillerPe plan has ended (owner 2026-10-08): its pages are locked. */
+export class PlanLockedError extends Error {}
+
 let token: string | null = null;
 let sessionEnded: (() => void) | null = null;
+let planLocked: ((plan: PlanState | null) => void) | null = null;
+/** The lock dialog opens through this. */
+export const onPlanLocked = (fn: (plan: PlanState | null) => void) => {
+  planLocked = fn;
+};
 
 export const setToken = (t: string | null) => {
   token = t;
@@ -108,6 +130,10 @@ export async function call<T>(name: string, ...args: unknown[]): Promise<T> {
   if (status === 401) {
     sessionEnded?.();
     throw new SessionEndedError();
+  }
+  if (status === 402 && json["code"] === "plan-expired") {
+    planLocked?.((json["plan"] as PlanState | undefined) ?? null);
+    throw new PlanLockedError((json["error"] as string) || "This outlet's BillerPe plan has ended.");
   }
   if (!json["ok"]) throw new Error((json["error"] as string) || GENERIC);
   return json["result"] as T;

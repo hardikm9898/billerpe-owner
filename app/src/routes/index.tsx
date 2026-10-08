@@ -225,6 +225,7 @@ function OutletCard({ outlet, row, total, now }: { outlet: Outlet; row: HomeOutl
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <div className="truncate text-[15px] font-bold">{outlet.name}</div>
+          {outlet.planExpired && <div className="mt-1 inline-block rounded-md bg-brand px-1.5 text-[10.5px] font-extrabold text-white">PLAN ENDED · TAP TO RENEW</div>}
           <div className={cn("mt-1 flex items-center gap-1.5 text-xs font-bold", TONE_TEXT[line.tone])}>
             <Dot className={TONE_DOT[line.tone]} />
             <span className="truncate">{line.label}</span>
