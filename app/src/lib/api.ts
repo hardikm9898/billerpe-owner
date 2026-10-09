@@ -57,6 +57,8 @@ export interface PlanState {
   inGrace: boolean;
   graceUsed: boolean;
   canExtend: boolean;
+  /** "unpaid" = locked because the first invoice is not paid (owner 2026-10-09). */
+  reason?: string | null;
   message: string | null;
 }
 export interface OutletsResult {
