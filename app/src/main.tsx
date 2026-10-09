@@ -11,7 +11,6 @@ import { createRoot } from "react-dom/client";
 import { RouterProvider } from "@tanstack/react-router";
 import { Capacitor } from "@capacitor/core";
 import { App as CapApp } from "@capacitor/app";
-import { StatusBar, Style } from "@capacitor/status-bar";
 import { router } from "./router";
 import { initI18n } from "./lib/i18n";
 import { initTheme } from "./lib/theme";
@@ -22,12 +21,11 @@ initTheme();
 // put the app in the background instead of closing it to a blank view.
 const ROOTS = new Set(["/", "/bills", "/reports", "/manage", "/alerts"]);
 if (Capacitor.isNativePlatform()) {
+  // Status / gesture bar colours: MainActivity (EdgeInsets.java), not the StatusBar plugin.
   void CapApp.addListener("backButton", () => {
     if (ROOTS.has(router.history.location.pathname)) void CapApp.minimizeApp();
     else router.history.back();
   });
-  void StatusBar.setStyle({ style: Style.Dark }).catch(() => {});
-  void StatusBar.setBackgroundColor({ color: "#201815" }).catch(() => {});
 }
 
 // The phone's language first, so the first screen is already in it.
